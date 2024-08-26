@@ -29,7 +29,7 @@
 # .PHONY: all build test clean
 
 # Go parameters
-APP_NAME=tarot-app
+APP_NAME=cmd/app
 
 .PHONY: tailwind-watch
 tailwind-watch:
