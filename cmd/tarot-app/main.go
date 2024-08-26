@@ -58,11 +58,12 @@ func main() {
 
     router.GET("/reveal-meanings", func(c *gin.Context) {
 		meanings := generateMeanings(selectedCards)
-		err := views.PartialMeanings(meanings).Render(c.Request.Context(), c.Writer)
+		err := views.PartialMeanings(meanings, selectedCards).Render(c.Request.Context(), c.Writer)
 		if err != nil {
 			c.String(http.StatusInternalServerError, "Error rendering template: %v", err)
 		}
 	})
+	
 	
 
     err := router.Run(":8080")
