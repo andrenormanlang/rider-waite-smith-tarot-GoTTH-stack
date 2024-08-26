@@ -3,19 +3,19 @@ package handlers
 import (
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/database"
-    "andrenormanlang/tarot-go-htmx/models"
+    "andrenormanlang/tarot-go-htmx/common"
     "net/http"
 )
 
 func GetCards(c *gin.Context) {
-    var cards []models.Card
+    var cards []common.Card
     database.DB.Find(&cards)
     c.JSON(http.StatusOK, cards)
 }
 
 func GetCardByID(c *gin.Context) {
     id := c.Param("id")
-    var card models.Card
+    var card common.Card
     if err := database.DB.First(&card, id).Error; err != nil {
         c.JSON(http.StatusNotFound, gin.H{"error": "Card not found"})
         return
@@ -24,7 +24,7 @@ func GetCardByID(c *gin.Context) {
 }
 
 func CreateCard(c *gin.Context) {
-    var input models.Card
+    var input common.Card
     if err := c.ShouldBindJSON(&input); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
@@ -34,7 +34,7 @@ func CreateCard(c *gin.Context) {
 }
 
 func BulkCreateCards(c *gin.Context) {
-    var cards []models.Card
+    var cards []common.Card
     if err := c.ShouldBindJSON(&cards); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
@@ -51,13 +51,13 @@ func BulkCreateCards(c *gin.Context) {
 
 func UpdateCard(c *gin.Context) {
     id := c.Param("id")
-    var card models.Card
+    var card common.Card
     if err := database.DB.First(&card, id).Error; err != nil {
         c.JSON(http.StatusNotFound, gin.H{"error": "Card not found"})
         return
     }
 
-    var input models.Card
+    var input common.Card
     if err := c.ShouldBindJSON(&input); err != nil {
         c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
         return
@@ -69,7 +69,7 @@ func UpdateCard(c *gin.Context) {
 
 func DeleteCard(c *gin.Context) {
     id := c.Param("id")
-    var card models.Card
+    var card common.Card
     if err := database.DB.First(&card, id).Error; err != nil {
         c.JSON(http.StatusNotFound, gin.H{"error": "Card not found"})
         return

@@ -4,14 +4,17 @@ import (
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/common"
     "andrenormanlang/tarot-go-htmx/app/routes"
+    "andrenormanlang/tarot-go-htmx/database"
 )
 
 func main() {
     router := gin.Default()
     router.Static("/static", "./static")
 
+    database.ConnectDatabase()
+
     state := &common.State{
-        FullDeck:     common.GenerateFullDeck(),
+        FullDeck:     []common.Card{}, // Will be filled by the database
         SelectedCards: []common.Card{},
         IsShuffling:  false,
     }

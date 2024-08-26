@@ -4,7 +4,7 @@ import (
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/admin-app/routes"
     "andrenormanlang/tarot-go-htmx/database"
-    "andrenormanlang/tarot-go-htmx/models"
+    "andrenormanlang/tarot-go-htmx/common"
 )
 
 func main() {
@@ -14,7 +14,7 @@ func main() {
     database.ConnectDatabase()
 
     // Migrate the schema
-    database.DB.AutoMigrate(&models.Card{})
+    database.DB.AutoMigrate(&common.Card{})
 
 
     routes.BackendRegisterRoutes(router)
