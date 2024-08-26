@@ -56,7 +56,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var2 string
 				templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("/select-card?card=" + card.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 40, Col: 76}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 38, Col: 56}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 				if templ_7745c5c3_Err != nil {
@@ -85,7 +85,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + card.Image)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 54, Col: 68}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 48}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -98,7 +98,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 54, Col: 84}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 66}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -111,7 +111,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 55, Col: 72}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 52, Col: 52}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -136,17 +136,30 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, meaning := range meanings {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-white shadow-md rounded-lg p-4\"><p class=\"text-gray-700\">")
+		for i, meaning := range meanings {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-white shadow-md rounded-lg p-4\"><h3 class=\"text-lg font-semibold mb-2\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var6 string
-			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(meaning)
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(selectedCards[i].Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 69, Col: 61}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 64, Col: 69}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3><p class=\"text-gray-700\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var7 string
+			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(meaning)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 65, Col: 41}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

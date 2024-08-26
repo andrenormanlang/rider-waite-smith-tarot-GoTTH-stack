@@ -57,12 +57,13 @@ func main() {
     })
 
     router.GET("/reveal-meanings", func(c *gin.Context) {
-        meanings := generateMeanings(selectedCards)
-        err := views.Home(fullDeck, selectedCards, meanings, isShuffling).Render(c.Request.Context(), c.Writer)
-        if err != nil {
-            c.String(http.StatusInternalServerError, "Error rendering template: %v", err)
-        }
-    })
+		meanings := generateMeanings(selectedCards)
+		err := views.PartialMeanings(meanings).Render(c.Request.Context(), c.Writer)
+		if err != nil {
+			c.String(http.StatusInternalServerError, "Error rendering template: %v", err)
+		}
+	})
+	
 
     err := router.Run(":8080")
     if err != nil {
@@ -112,9 +113,56 @@ func generateFullDeck() []common.Card {
 }
 
 func generateMeanings(selectedCards []common.Card) []string {
-    meanings := []string{}
-    for _, card := range selectedCards {
-        meanings = append(meanings, "Meaning of "+card.Name)
+    meanings := make([]string, len(selectedCards))
+    for i, card := range selectedCards {
+        switch card.Name {
+        case "The Fool":
+            meanings[i] = "New beginnings, innocence, spontaneity"
+        case "The Magician":
+            meanings[i] = "Manifestation, resourcefulness, power"
+        case "The High Priestess":
+            meanings[i] = "Intuition, sacred knowledge, divine feminine"
+        case "The Empress":
+            meanings[i] = "Femininity, beauty, nature, abundance"
+        case "The Emperor":
+            meanings[i] = "Authority, establishment, structure, a father figure"
+        case "The Hierophant":
+            meanings[i] = "Spiritual wisdom, religious beliefs, conformity, tradition"
+        case "The Lovers":
+            meanings[i] = "Love, harmony, relationships, values alignment, choices"
+        case "The Chariot":
+            meanings[i] = "Control, willpower, success, action, determination"
+        case "Strength":
+            meanings[i] = "Strength, courage, persuasion, influence, compassion"
+        case "The Hermit":
+            meanings[i] = "Soul-searching, introspection, being alone, inner guidance"
+        case "Wheel of Fortune":
+            meanings[i] = "Good luck, karma, life cycles, destiny, a turning point"
+        case "Justice":
+            meanings[i] = "Justice, fairness, truth, cause and effect, law"
+        case "The Hanged Man":
+            meanings[i] = "Surrender, letting go, new perspectives"
+        case "Death":
+            meanings[i] = "Endings, change, transformation, transition"
+        case "Temperance":
+            meanings[i] = "Balance, moderation, patience, purpose"
+        case "The Devil":
+            meanings[i] = "Shadow self, attachment, addiction, restriction, sexuality"
+        case "The Tower":
+            meanings[i] = "Sudden change, upheaval, chaos, revelation, awakening"
+        case "The Star":
+            meanings[i] = "Hope, faith, purpose, renewal, spirituality"
+        case "The Moon":
+            meanings[i] = "Illusion, fear, anxiety, subconscious, intuition"
+        case "The Sun":
+            meanings[i] = "Positivity, fun, warmth, success, vitality"
+        case "Judgement":
+            meanings[i] = "Judgement, rebirth, inner calling, absolution"
+        case "The World":
+            meanings[i] = "Completion, integration, accomplishment, travel"
+        default:
+            meanings[i] = "Meaning not available for " + card.Name
+        }
     }
     return meanings
 }
