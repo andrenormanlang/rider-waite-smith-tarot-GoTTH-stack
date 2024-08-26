@@ -28,8 +28,10 @@
 
 # .PHONY: all build test clean
 
+
 # Go parameters
-APP_NAME=cmd/app
+APP_NAME=cmd/tarot-app
+ADMIN_NAME=cmd/tarot-admin-app
 
 .PHONY: tailwind-watch
 tailwind-watch:
@@ -43,10 +45,18 @@ tailwind-build:
 templ-generate:
 	templ generate
 
-.PHONY: dev
-dev:
-	go build -o ./tmp/$(APP_NAME) ./cmd/$(APP_NAME)/main.go && air
+.PHONY: dev-app
+dev-app:
+	go build -o ./tmp/app-main.exe ./cmd/tarot-app/main.go && air -c app.air.toml
+
+.PHONY: dev-admin
+dev-admin:
+	go build -o ./tmp/admin-main.exe ./cmd/tarot-admin-app/main.go && air -c admin.air.toml
+
+.PHONY: dev-all
+dev-all:
+	make dev-app & make dev-admin
 
 .PHONY: build
 build:
-	make tailwind-build && make templ-generate && go build -o ./tmp/$(APP_NAME) ./cmd/$(APP_NAME)/main.go
+	make tailwind-build && make templ-generate && go build -o ./tmp/app-main.exe ./cmd/tarot-app/main.go && go build -o ./tmp/admin-main.exe ./cmd/tarot-admin-app/main.go

@@ -18,7 +18,7 @@ func main() {
 
     routes.RegisterRoutes(router, state)
 
-    err := router.Run(":8080")
+    err := router.Run(":8080") // Listening on port 8080
     if err != nil {
         panic("Server could not start")
     }
