@@ -1,0 +1,16 @@
+package views
+
+import (
+	"andrenormanlang/tarot-go-htmx/common"
+)
+
+templ PartialCards(cards []common.Card) {
+	<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+		for _, card := range cards {
+		<div class="bg-white shadow-md rounded-lg p-4">
+			<img src="{card.Image}" alt="{card.Name}" class="mx-auto mb-4"/>
+			<h2 class="text-lg font-semibold">{card.Name}</h2>
+		</div>
+		}
+	</div>
+}
