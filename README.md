@@ -1,6 +1,6 @@
-# Tarot Go HTMX 🃏🌀
+# ⚫GoTTH🖤 Tarot 🃏🌀
 
-Tarot reading web application built on GoTTH  stack (Go,Templ,Tailwind & HTMX ). 🎨🖥️
+Tarot reading web application built on 🖤🕷️🕸️🦇GoTTH⚫🌙🌃  stack (Go,Templ,Tailwind & HTMX ). 🎨🖥️
 
 ## Features ✨
 
@@ -46,6 +46,8 @@ Tarot reading web application built on GoTTH  stack (Go,Templ,Tailwind & HTMX ).
 - HTMX 🔥
 - Templ
 - Tailwind
+- PostgreSQL 🗃️
+- Reporting and data analysis 📊
 
 ## Contributing 🤝
 
