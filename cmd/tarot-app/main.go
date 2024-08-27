@@ -9,6 +9,7 @@ import (
 
 func main() {
     router := gin.Default()
+    router.Static("/static", "./static")
     router.Static("/images", "./images")  // Serve images directory
 
     database.ConnectDatabase()

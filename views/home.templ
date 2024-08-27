@@ -10,115 +10,8 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Free Tarot Reading</title>
 			<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+            <link href="/static/css/styles.css" rel="stylesheet"/>
 			<script src="/static/htmx.min.js"></script>
-			<style>
-    /* Keyframes for shuffle animation */
-    @keyframes shuffle {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0); }
-    }
-
-    .animate-shuffle {
-        animation: shuffle 0.5s infinite;
-    }
-
-    /* Custom styles to fit everything on one page */
-    body {
-        padding: 4px;
-    }
-
-    .container {
-        max-width: 800px; /* Reduce the container width */
-    }
-
-    h1 {
-        font-size: 2.5rem; /* Reduce the title font size */
-    }
-
-    p {
-        font-size: 1rem; /* Reduce the paragraph font size */
-    }
-
-    #shuffled-cards img, 
-    #selected-cards img {
-        width: 70%; /* Scale down images */
-        height: auto;
-    }
-
-    button {
-        padding: 0.5rem 1rem; /* Reduce button padding */
-    }
-
-    /* Updated shuffled cards to take only one row with horizontal scrolling */
-    #shuffled-cards {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem; /* Space between the cards */
-        padding: 1rem;
-    }
-
-    #shuffled-cards::-webkit-scrollbar {
-        display: none; /* Hide scrollbar in WebKit-based browsers */
-    }
-
-    .card-container {
-        flex: 0 0 auto; /* Prevent cards from shrinking */
-        width: 100px; /* Adjust width as needed */
-    }
-
-    #selected-cards {
-        grid-template-columns: repeat(3, 1fr); /* Adjust number of columns */
-    }
-
-    .mt-4 {
-        margin-top: 1rem; /* Reduce top margin */
-    }
-
-    .mb-2 {
-        margin-bottom: 0.5rem; /* Reduce bottom margin */
-    }
-
-    .bg-red-500, 
-    .bg-purple-500, 
-    .bg-yellow-500 {
-        border-radius: 0.25rem; /* Adjust button border radius */
-    }
-
-    /* Card flip animation */
-    .card-container {
-        perspective: 1000px;
-    }
-
-    .card {
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        transition: transform 0.6s;
-        transform: rotateY(180deg);
-    }
-
-    .card.flip {
-        transform: rotateY(0deg);
-    }
-
-    .card .front,
-    .card .back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-    }
-
-    .card .front {
-        background: url('/images/CardBacks.png') no-repeat center/cover;
-    }
-
-    .card .back {
-        transform: rotateY(180deg);
-        background-size: cover;
-    }
-</style>
 		</head>
 		<body class="bg-gray-100 text-center py-4">
 			<div class="container mx-auto px-2">
@@ -132,12 +25,12 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 					<button hx-get="/shuffle-cards" hx-target="body" class="bg-purple-500 text-white px-4 py-2 rounded-lg">Shuffle Cards</button>
 				}
 				<!-- Shuffled Cards Container -->
-				<div id="shuffled-cards" class="mt-4 flex overflow-x-auto gap-4">
+				<div id="shuffled-cards" class="relative h-48 mt-4">
 					<!-- Loop through each card -->
 					for _, card := range cards {
 						<div class="card-container">
 							if !isShuffling {
-								<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-gray-400 p-1 rounded-lg transition-transform hover:scale-105">
+								<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-transparent">
 									<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
 								</button>
 							} else {
@@ -174,21 +67,7 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 				</div>
 			</div>
 			<!-- Script to Reveal Cards -->
-			<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.card');
-
-            function revealCard(card, delay) {
-                setTimeout(() => {
-                    card.classList.add('flip');
-                }, delay);
-            }
-
-            cards.forEach((card, index) => {
-                revealCard(card, index * 500);  // Adjust delay between reveals
-            });
-        });
-    </script>
+			 <script src="/static/script/script.js"></script> 
 		</body>
 	</html>
 }

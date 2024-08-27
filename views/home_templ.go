@@ -28,7 +28,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"><script src=\"/static/htmx.min.js\"></script><style>\r\n    /* Keyframes for shuffle animation */\r\n    @keyframes shuffle {\r\n        0% { transform: translateY(0); }\r\n        50% { transform: translateY(-10px); }\r\n        100% { transform: translateY(0); }\r\n    }\r\n\r\n    .animate-shuffle {\r\n        animation: shuffle 0.5s infinite;\r\n    }\r\n\r\n    /* Custom styles to fit everything on one page */\r\n    body {\r\n        padding: 4px;\r\n    }\r\n\r\n    .container {\r\n        max-width: 800px; /* Reduce the container width */\r\n    }\r\n\r\n    h1 {\r\n        font-size: 2.5rem; /* Reduce the title font size */\r\n    }\r\n\r\n    p {\r\n        font-size: 1rem; /* Reduce the paragraph font size */\r\n    }\r\n\r\n    #shuffled-cards img, \r\n    #selected-cards img {\r\n        width: 70%; /* Scale down images */\r\n        height: auto;\r\n    }\r\n\r\n    button {\r\n        padding: 0.5rem 1rem; /* Reduce button padding */\r\n    }\r\n\r\n    /* Updated shuffled cards to take only one row with horizontal scrolling */\r\n    #shuffled-cards {\r\n        display: flex;\r\n        overflow-x: auto;\r\n        gap: 1rem; /* Space between the cards */\r\n        padding: 1rem;\r\n    }\r\n\r\n    #shuffled-cards::-webkit-scrollbar {\r\n        display: none; /* Hide scrollbar in WebKit-based browsers */\r\n    }\r\n\r\n    .card-container {\r\n        flex: 0 0 auto; /* Prevent cards from shrinking */\r\n        width: 100px; /* Adjust width as needed */\r\n    }\r\n\r\n    #selected-cards {\r\n        grid-template-columns: repeat(3, 1fr); /* Adjust number of columns */\r\n    }\r\n\r\n    .mt-4 {\r\n        margin-top: 1rem; /* Reduce top margin */\r\n    }\r\n\r\n    .mb-2 {\r\n        margin-bottom: 0.5rem; /* Reduce bottom margin */\r\n    }\r\n\r\n    .bg-red-500, \r\n    .bg-purple-500, \r\n    .bg-yellow-500 {\r\n        border-radius: 0.25rem; /* Adjust button border radius */\r\n    }\r\n\r\n    /* Card flip animation */\r\n    .card-container {\r\n        perspective: 1000px;\r\n    }\r\n\r\n    .card {\r\n        width: 100%;\r\n        height: 100%;\r\n        transform-style: preserve-3d;\r\n        transition: transform 0.6s;\r\n        transform: rotateY(180deg);\r\n    }\r\n\r\n    .card.flip {\r\n        transform: rotateY(0deg);\r\n    }\r\n\r\n    .card .front,\r\n    .card .back {\r\n        position: absolute;\r\n        width: 100%;\r\n        height: 100%;\r\n        backface-visibility: hidden;\r\n    }\r\n\r\n    .card .front {\r\n        background: url('/images/CardBacks.png') no-repeat center/cover;\r\n    }\r\n\r\n    .card .back {\r\n        transform: rotateY(180deg);\r\n        background-size: cover;\r\n    }\r\n</style></head><body class=\"bg-gray-100 text-center py-4\"><div class=\"container mx-auto px-2\"><h1 class=\"text-3xl font-bold mb-2\">Free Tarot Reading</h1><p class=\"text-gray-700 mb-4\">Get the answers you need with this 3-card Tarot spread.</p><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full max-w-lg mx-auto p-2 border border-gray-300 rounded mb-4\"><!-- Shuffle/Stop Shuffle Button -->")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><script src=\"/static/htmx.min.js\"></script></head><body class=\"bg-gray-100 text-center py-4\"><div class=\"container mx-auto px-2\"><h1 class=\"text-3xl font-bold mb-2\">Free Tarot Reading</h1><p class=\"text-gray-700 mb-4\">Get the answers you need with this 3-card Tarot spread.</p><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full max-w-lg mx-auto p-2 border border-gray-300 rounded mb-4\"><!-- Shuffle/Stop Shuffle Button -->")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -43,7 +43,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Shuffled Cards Container --><div id=\"shuffled-cards\" class=\"mt-4 flex overflow-x-auto gap-4\"><!-- Loop through each card -->")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Shuffled Cards Container --><div id=\"shuffled-cards\" class=\"relative h-48 mt-4\"><!-- Loop through each card -->")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -60,13 +60,13 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var2 string
 				templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("/select-card?card=" + card.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 140, Col: 57}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 33, Col: 57}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" class=\"bg-gray-400 p-1 rounded-lg transition-transform hover:scale-105\"><img src=\"/images/CardBacks.png\" alt=\"Card Back\" class=\"w-full h-auto\"></button>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" class=\"bg-transparent\"><img src=\"/images/CardBacks.png\" alt=\"Card Back\" class=\"w-full h-auto\"></button>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -93,7 +93,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("/images/" + card.Image)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 155, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 48, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -106,7 +106,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 155, Col: 59}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 48, Col: 59}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -119,7 +119,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 156, Col: 52}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 49, Col: 52}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -152,7 +152,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(selectedCards[i].Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 170, Col: 69}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 63, Col: 69}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -165,7 +165,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(meaning)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 171, Col: 41}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 64, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
@@ -176,7 +176,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><!-- Script to Reveal Cards --><script>\r\n        document.addEventListener(\"DOMContentLoaded\", function() {\r\n            const cards = document.querySelectorAll('.card');\r\n\r\n            function revealCard(card, delay) {\r\n                setTimeout(() => {\r\n                    card.classList.add('flip');\r\n                }, delay);\r\n            }\r\n\r\n            cards.forEach((card, index) => {\r\n                revealCard(card, index * 500);  // Adjust delay between reveals\r\n            });\r\n        });\r\n    </script></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><!-- Script to Reveal Cards --><script src=\"/static/script/script.js\"></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
