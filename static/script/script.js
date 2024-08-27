@@ -12,7 +12,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-function populateModal(card) {
-    document.getElementById('cardModalLabel').textContent = card.name;
-    document.getElementById('modal-desc').textContent = card.desc;
+function populateModal(cardString) {
+    // Parse the stringified card object
+    const card = JSON.parse(cardString);
+
+    // Set the content of the modal
+    document.getElementById('cardModalLabel').textContent = card.Name;
+    document.getElementById('modal-desc').innerHTML = `
+        <p class="text-sm text-white flex-grow overflow-y-auto">${card.MeaningUp}</p>
+        <p class="text-sm text-white flex-grow overflow-y-auto">${card.Description}</p>
+    `;
 }
+
