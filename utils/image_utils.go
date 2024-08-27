@@ -72,33 +72,33 @@ func GenerateImagePath(cardName string) string {
     cardName = strings.ToLower(strings.TrimSpace(cardName))
     
     // Handle Major Arcana (e.g., "The Fool" -> "TheFool.png")
-    majorArcana := map[string]bool{
-        "thefool":        true,
-        "themagician":    true,
-        "thehighpriestess": true,
-        "theempress":     true,
-        "theemperor":     true,
-        "thehierophant":  true,
-        "thelovers":      true,
-        "thechariot":     true,
-        "strength":       true,
-        "thehermit":      true,
-        "wheelfortune":   true,
-        "justice":        true,
-        "thehangedman":   true,
-        "death":          true,
-        "temperance":     true,
-        "thedevil":       true,
-        "thetower":       true,
-        "thestar":        true,
-        "themoon":        true,
-        "thesun":         true,
-        "judgement":      true,
-        "theworld":       true,
+    majorArcana := map[string]string{
+        "the fool":        "TheFool.png",
+        "the magician":    "TheMagician.png",
+        "the high priestess": "TheHighPriestess.png",
+        "the empress":     "TheEmpress.png",
+        "the emperor":     "TheEmperor.png",
+        "the hierophant":  "TheHierophant.png",
+        "the lovers":      "TheLovers.png",
+        "the chariot":     "TheChariot.png",
+        "strength":        "Strength.png",
+        "the hermit":      "TheHermit.png",
+        "wheel of fortune": "WheelOfFortune.png",
+        "justice":         "Justice.png",
+        "the hanged man":  "TheHangedMan.png",
+        "death":           "Death.png",
+        "temperance":      "Temperance.png",
+        "the devil":       "TheDevil.png",
+        "the tower":       "TheTower.png",
+        "the star":        "TheStar.png",
+        "the moon":        "TheMoon.png",
+        "the sun":         "TheSun.png",
+        "judgement":       "Judgement.png",
+        "the world":       "TheWorld.png",
     }
     
-    if majorArcana[cardName] {
-        return fmt.Sprintf("%s.png", strings.ReplaceAll(strings.Title(cardName), " ", ""))
+    if imagePath, exists := majorArcana[cardName]; exists {
+        return imagePath
     }
 
     // Handle Minor Arcana by splitting the name into the rank and suit (e.g., "Four of Swords" -> "swords04.png")
@@ -114,6 +114,7 @@ func GenerateImagePath(cardName string) string {
     // If no match found, return an empty string or some default image path
     return ""
 }
+
 
 // convertToNumber converts the card rank (e.g., "Four") to its corresponding number
 func convertToNumber(rank string) (int, error) {
