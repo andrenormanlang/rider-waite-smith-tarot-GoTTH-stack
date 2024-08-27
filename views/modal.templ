@@ -4,15 +4,14 @@ templ Modal(cardName string, description string, meaningUp string) {
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{ cardName }</h5>
+                <h5 class="modal-title smythe-regular text-3xl">{ cardName }</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <p><strong>Description:</strong></p>
-                <p>{ description }</p>
-                <hr>
-                <p><strong>Meaning (Upright):</strong></p>
-                <p>{ meaningUp }</p>
+            <div class="modal-body px-6 py-4">
+                <p class="text-2xl old-standard-tt-bold mb-2">Description:</p>
+                <p class="text-2xl old-standard-tt-regular mb-4">{ description }</p>
+                <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Upright):</p>
+                <p class="text-2xl old-standard-tt-regular">{ meaningUp }</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

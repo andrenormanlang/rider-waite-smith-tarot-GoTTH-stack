@@ -117,8 +117,10 @@ p {
     height: auto;
 }
 
+/* Reduce the gap between the selected cards */
 #selected-cards {
-    grid-template-columns: repeat(3, 1fr); /* Adjust number of columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem; /* Reduced gap between cards */
 }
 
 .mt-4 {
@@ -138,8 +140,8 @@ p {
 /* Flip card container */
 .flip-card {
     background-color: transparent;
-    width: 200px;
-    height: 350px;
+    width: 18rem; /* New width */
+    height: 31.5rem; 
     perspective: 1000px; /* 3D effect */
     margin: 0 auto;
 }
