@@ -5,11 +5,11 @@ import (
     "andrenormanlang/tarot-go-htmx/common"
     "andrenormanlang/tarot-go-htmx/views"
     "andrenormanlang/tarot-go-htmx/database"
+    "andrenormanlang/tarot-go-htmx/utils"
     "net/http"
-    "math/rand"
-    "time"
 )
 
+// ShuffleCards applies the Faro shuffle to the deck
 func ShuffleCards(state *common.State) gin.HandlerFunc {
     return func(c *gin.Context) {
         state.IsShuffling = true
@@ -23,7 +23,9 @@ func ShuffleCards(state *common.State) gin.HandlerFunc {
             fullDeck[i].Image = "CardBacks.png"
         }
         
-        state.FullDeck = shuffleCards(fullDeck)
+        // Apply the Faro shuffle instead of the random shuffle
+        // state.FullDeck = utils.PerformMultipleFaroShuffles(fullDeck, 3)
+        state.FullDeck = utils.PerformMultipleRiffleShuffles(fullDeck, 3) 
         state.SelectedCards = []common.Card{} // Reset selectedCards
         
         err := views.Home(state.FullDeck, state.SelectedCards, nil, state.IsShuffling).Render(c.Request.Context(), c.Writer)
@@ -50,8 +52,24 @@ func StopShuffle(state *common.State) gin.HandlerFunc {
     }
 }
 
-func shuffleCards(cards []common.Card) []common.Card {
-    rand.Seed(time.Now().UnixNano())
-    rand.Shuffle(len(cards), func(i, j int) { cards[i], cards[j] = cards[j], cards[i] })
-    return cards
-}
+// Faro shuffle function
+// func faroShuffle(cards []common.Card) []common.Card {
+//     // Ensure that the number of cards is even. If not, just return the original deck.
+//     if len(cards) % 2 != 0 {
+//         return cards
+//     }
+
+//     // Split the deck into two halves
+//     mid := len(cards) / 2
+//     firstHalf := cards[:mid]
+//     secondHalf := cards[mid:]
+
+//     // Interleave the cards from the two halves
+//     shuffledDeck := make([]common.Card, len(cards))
+//     for i := 0; i < mid; i++ {
+//         shuffledDeck[2*i] = firstHalf[i]
+//         shuffledDeck[2*i+1] = secondHalf[i]
+//     }
+
+//     return shuffledDeck
+// }
