@@ -28,7 +28,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><script src=\"/static/htmx.min.js\"></script></head><body class=\"bg-gray-100 text-center py-4\"><div class=\"container mx-auto px-2\"><h1 class=\"text-3xl font-bold mb-2\">Free Tarot Reading</h1><p class=\"text-gray-700 mb-4\">Get the answers you need with this 3-card Tarot spread.</p><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full max-w-lg mx-auto p-2 border border-gray-300 rounded mb-4\"><!-- Shuffle/Stop Shuffle Button -->")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><script src=\"/static/script/htmx.min.js\"></script></head><body class=\"bg-gray-100 text-center py-4\"><div class=\"container mx-auto px-2\"><h1 class=\"text-3xl font-bold mb-2\">Free Tarot Reading</h1><p class=\"text-gray-700 mb-4\">Get the answers you need with this 3-card Tarot spread.</p><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full max-w-lg mx-auto p-2 border border-gray-300 rounded mb-4\"><!-- Shuffle/Stop Shuffle Button -->")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -48,7 +48,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			return templ_7745c5c3_Err
 		}
 		for _, card := range cards {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card-container\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card-container\" style=\"--card-index: {index};\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -10,8 +10,8 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<title>Free Tarot Reading</title>
 			<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-            <link href="/static/css/styles.css" rel="stylesheet"/>
-			<script src="/static/htmx.min.js"></script>
+			<link href="/static/css/styles.css" rel="stylesheet"/>
+			<script src="/static/script/htmx.min.js"></script>
 		</head>
 		<body class="bg-gray-100 text-center py-4">
 			<div class="container mx-auto px-2">
@@ -28,7 +28,7 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 				<div id="shuffled-cards" class="relative h-48 mt-4">
 					<!-- Loop through each card -->
 					for _, card := range cards {
-						<div class="card-container">
+						<div class="card-container" style="--card-index: {index};">
 							if !isShuffling {
 								<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-transparent">
 									<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
@@ -67,7 +67,7 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 				</div>
 			</div>
 			<!-- Script to Reveal Cards -->
-			 <script src="/static/script/script.js"></script> 
+			<script src="/static/script/script.js"></script>
 		</body>
 	</html>
 }
