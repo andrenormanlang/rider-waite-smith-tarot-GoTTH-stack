@@ -28,7 +28,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"><script src=\"/static/script/htmx.min.js\"></script></head><body class=\"bg-gray-100 text-center py-4\"><div class=\"container mx-auto px-2\"><h1 class=\"text-5xl font-bold mb-2\">Rider Waite Smith (Mind, Body & Spirit)</h1><p class=\"text-gray-700 mb-4\">Get the answers you need with this 3-card Tarot spread.</p><!-- Button to trigger the modal --><button type=\"button\" class=\"btn btn-info mb-4\" data-bs-toggle=\"modal\" data-bs-target=\"#infoModal\">View Card Positions</button><div class=\"w-full max-w-lg mx-auto mb-4\"><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full p-2 border border-gray-300 rounded mb-2\"><!-- Shuffle/Stop Shuffle Button -->")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"><script src=\"/static/script/htmx.min.js\"></script></head><body class=\"bg-gray-100 text-center py-4\"><div class=\"container mx-auto px-2\"><h1 class=\"text-5xl font-bold mb-2\">Rider Waite Smith (Mind, Body & Spirit)</h1><!-- Button to trigger the modal --><button type=\"button\" class=\"text-2xl btn btn-info mb-4 smythe-regular\" data-bs-toggle=\"modal\" data-bs-target=\"#infoModal\">Meaning of Card Positions?</button><div class=\"w-full max-w-lg mx-auto mb-4\"><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full p-2 border border-gray-300 rounded mb-2\"><!-- Shuffle/Stop Shuffle Button -->")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -38,7 +38,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				return templ_7745c5c3_Err
 			}
 		} else {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button hx-get=\"/shuffle-cards\" hx-target=\"body\" class=\"bg-purple-500 text-white px-4 py-2 rounded-lg w-full\">Shuffle Cards</button>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button hx-get=\"/shuffle-cards\" hx-target=\"body\" class=\"text-2xl bg-purple-500 text-white px-4 py-2 rounded-lg w-full smythe-regular\">Shuffle Cards</button>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -139,7 +139,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><button type=\"button\" class=\"btn btn-primary mt-2\" hx-get=\"")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><button type=\"button\" class=\"btn btn-primary mt-2 old-standard-tt-regular text-lg\" hx-get=\"")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
