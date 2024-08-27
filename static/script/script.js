@@ -11,3 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
         revealCard(card, index * 500);  // Adjust delay between reveals
     });
 });
+
+function populateModal(card) {
+    document.getElementById('cardModalLabel').textContent = card.name;
+    document.getElementById('modal-desc').textContent = card.desc;
+}
