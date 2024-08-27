@@ -10,16 +10,18 @@ import (
 func main() {
     router := gin.Default()
     router.Static("/static", "./static")
+    router.Static("/images", "./images")  // Serve images directory
 
     database.ConnectDatabase()
 
-    // Migrate the schema
+    // Migrate the schema to ensure the database structure is up-to-date
     database.DB.AutoMigrate(&common.Card{})
 
-
+    // Register all admin routes
     routes.BackendRegisterRoutes(router)
 
-    err := router.Run(":8081") // Listening on port 8081
+    // Start the server on port 8081
+    err := router.Run(":8081")
     if err != nil {
         panic("Server could not start")
     }

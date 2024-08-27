@@ -62,12 +62,12 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" class=\"bg-gray-400 p-2 rounded-lg transition-transform hover:scale-105\"><img src=\"/static/images/card-back.jpg\" alt=\"Card Back\" class=\"w-full h-auto\"></button>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" class=\"bg-gray-400 p-2 rounded-lg transition-transform hover:scale-105\"><img src=\"/images/CardBacks.png\" alt=\"Card Back\" class=\"w-full h-auto\"></button>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			} else {
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-gray-400 p-2 rounded-lg animate-shuffle\"><img src=\"/static/images/card-back.jpg\" alt=\"Card Back\" class=\"w-full h-auto\"></div>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-gray-400 p-2 rounded-lg animate-shuffle\"><img src=\"/images/CardBacks.png\" alt=\"Card Back\" class=\"w-full h-auto\"></div>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -83,9 +83,9 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("/static/images/" + card.Image)
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("/images/" + card.Image)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 48}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -98,7 +98,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 66}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 51, Col: 59}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {

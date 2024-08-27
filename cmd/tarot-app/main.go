@@ -9,19 +9,24 @@ import (
 
 func main() {
     router := gin.Default()
-    router.Static("/static", "./static")
+    router.Static("/images", "./images")  // Serve images directory
 
     database.ConnectDatabase()
 
+    var fullDeck []common.Card
+    database.DB.Find(&fullDeck)  // Populate FullDeck from the database
+
     state := &common.State{
-        FullDeck:     []common.Card{}, // Will be filled by the database
+        FullDeck:     fullDeck,   // Set FullDeck from the database
         SelectedCards: []common.Card{},
         IsShuffling:  false,
     }
 
+    // Register all application routes
     routes.RegisterRoutes(router, state)
 
-    err := router.Run(":8080") // Listening on port 8080
+    // Start the server on port 8080
+    err := router.Run(":8080")
     if err != nil {
         panic("Server could not start")
     }

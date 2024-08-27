@@ -1,16 +1,20 @@
 package handlers
 
 import (
-    "github.com/gin-gonic/gin"
-    "andrenormanlang/tarot-go-htmx/common"
-    "andrenormanlang/tarot-go-htmx/views"
-    "net/http"
+	"andrenormanlang/tarot-go-htmx/common"
+	"andrenormanlang/tarot-go-htmx/utils"  // Import the utils package where GenerateImagePath is located
+	"andrenormanlang/tarot-go-htmx/views"
+	"fmt"
+	"net/http"
+	"net/url"
+
+	"github.com/gin-gonic/gin"
 )
 
 func SelectCard(state *common.State) gin.HandlerFunc {
     return func(c *gin.Context) {
         if !state.IsShuffling && len(state.SelectedCards) < 3 {
-            cardName := c.Query("card")
+            cardName, _ := url.QueryUnescape(c.Query("card"))
             card := findCardByName(cardName, state.FullDeck)
 
             // Check if the card is already selected
@@ -22,17 +26,24 @@ func SelectCard(state *common.State) gin.HandlerFunc {
                 }
             }
 
-            // Append the card if it's not already selected
             if !alreadySelected {
+                // Generate the correct image path
+                imagePath := utils.GenerateImagePath(card.Name)
+                card.Image = imagePath
+                fmt.Printf("Selected card: %s, Image path: %s\n", card.Name, card.Image)
+
                 state.SelectedCards = append(state.SelectedCards, card)
             }
         }
+
         err := views.Home(state.FullDeck, state.SelectedCards, nil, state.IsShuffling).Render(c.Request.Context(), c.Writer)
         if err != nil {
             c.String(http.StatusInternalServerError, "Error rendering template: %v", err)
+            return
         }
     }
 }
+
 
 func findCardByName(name string, fullDeck []common.Card) common.Card {
     for _, card := range fullDeck {

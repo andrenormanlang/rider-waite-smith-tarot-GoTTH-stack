@@ -36,11 +36,11 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 					for _, card := range cards {
 						if !isShuffling {
 							<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-gray-400 p-2 rounded-lg transition-transform hover:scale-105">
-								<img src="/static/images/card-back.jpg" alt="Card Back" class="w-full h-auto"/>
+								<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
 							</button>
 						} else {
 							<div class="bg-gray-400 p-2 rounded-lg animate-shuffle">
-								<img src="/static/images/card-back.jpg" alt="Card Back" class="w-full h-auto"/>
+								<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
 							</div>
 						}
 					}
@@ -48,7 +48,7 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 				<div id="selected-cards" class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
 					for _, card := range selectedCards {
 						<div class="bg-white shadow-md rounded-lg p-4">
-							<img src={ "/static/images/" + card.Image } alt={ card.Name } class="mx-auto mb-4 w-full h-auto"/>
+							<img src={ "/images/" + card.Image } alt={ card.Name } class="mx-auto mb-4 w-full h-auto"/>
 							<h2 class="text-lg font-semibold">{ card.Name }</h2>
 						</div>
 					}
