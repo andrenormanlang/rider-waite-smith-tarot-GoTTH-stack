@@ -12,4 +12,6 @@ func RegisterRoutes(router *gin.Engine, state *common.State) {
     router.GET("/stop-shuffle", handlers.StopShuffle(state))
     router.GET("/select-card", handlers.SelectCard(state))
     router.GET("/reveal-meanings", handlers.RevealMeanings(state))
+    router.GET("/card-detail", handlers.RevealCardDetail(state))
+
 }
