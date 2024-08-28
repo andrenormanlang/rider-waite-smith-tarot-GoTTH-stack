@@ -159,7 +159,7 @@ p {
 .flip-card {
     background-color: transparent;
     width: 13rem; /* New width */
-    height: 22rem; 
+    height: 23rem; 
     perspective: 1000px; /* 3D effect */
     margin: 0 auto;
 }

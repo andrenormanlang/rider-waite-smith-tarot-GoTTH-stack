@@ -28,17 +28,27 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"></head><body class=\"bg-gray-100 text-center py-2 px-2\"><div class=\"container mx-auto max-w-4xl\"><h1 class=\"text-2xl sm:text-3xl font-bold mb-2\">Rider Waite Smith (Mind, Body & Spirit)</h1><!-- Button to trigger the modal --><button type=\"button\" class=\"text-xl sm:text-2xl btn btn-info mb-2 smythe-regular\" data-bs-toggle=\"modal\" data-bs-target=\"#infoModal\">Meaning of Card Positions?</button><div class=\"w-full max-w-lg mx-auto mb-2\"><input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"w-full p-2 border border-gray-300 rounded mb-2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"></head><body class=\"bg-gray-100 text-center py-2 px-2\"><div class=\"container mx-auto max-w-4xl\"><h1 class=\"text-2xl sm:text-3xl font-bold mb-2\">Rider Waite Smith (Mind, Body & Spirit)</h1><!-- Button to trigger the modal --><button type=\"button\" class=\"text-xl sm:text-2xl btn btn-info w-64 mb-2 smythe-regular\" data-bs-toggle=\"modal\" data-bs-target=\"#infoModal\">Meaning of Card Positions?</button><div class=\"w-full max-w-lg mx-auto mb-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if len(selectedCards) == 0 {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button id=\"shuffleButton\" class=\"text-xl sm:text-2xl bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg w-full smythe-regular transition duration-300 ease-in-out\">Shuffle Cards</button>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button id=\"shuffleButton\" class=\"mb-2 text-xl sm:text-2xl bg-purple-500 hover:bg-purple-600 w-64 text-white px-4 py-2 rounded-lg smythe-regular transition duration-300 ease-in-out\">Shuffle Cards</button> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Modal for Card Positions --><div class=\"modal fade\" id=\"infoModal\" tabindex=\"-1\" aria-labelledby=\"infoModalLabel\" aria-hidden=\"true\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><h5 class=\"text-2xl modal-title smythe-regular\" id=\"infoModalLabel\">Card Positions in the \"Mind, Body & Spirit\" Tarot Spread</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><table class=\"w-full border-collapse\"><thead><tr class=\"bg-gray-200 text-gray-700\"><th class=\"text-3xl p-4 text-left smythe-regular\">Position</th><th class=\"text-3xl p-4 text-center smythe-regular\">Meaning</th></tr></thead> <tbody><tr class=\"border-b border-gray-300\"><td class=\"text-2xl p-4 font-semibold smythe-regular\">MIND:</td><td class=\"text-2xl p-4 text-center old-standard-tt-regular\">The first card represents logic, reasoning, and your rational side. What are you thinking? Or: What is an area of reason you should pay attention to?</td></tr><tr class=\"border-b border-gray-300\"><td class=\"text-2xl p-4 font-semibold smythe-regular\">BODY:</td><td class=\"text-2xl p-4 text-center old-standard-tt-regular\">The second card represents health, fitness, sexuality, and activity. What are you doing? Or: What is an area of action you should think about?</td></tr><tr class=\"border-b border-gray-300\"><td class=\"text-2xl p-4 font-semibold smythe-regular\">SPIRIT:</td><td class=\"text-2xl p-4 text-center old-standard-tt-regular\">The third and last card represents emotion, creativity, spirituality, and love. What are you feeling? Or: What should you focus on for spiritual growth?</td></tr></tbody></table></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button></div></div></div></div><!-- Shuffled Cards Container --><div id=\"shuffled-cards\" class=\"relative h-36 sm:h-48 mt-2 flex justify-center items-center overflow-x-auto mx-auto\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<input type=\"text\" placeholder=\"Enter your question or subject here (optional)\" id=\"tarot-question\" class=\"old-standard-tt-bold w-full p-2 border border-gray-300 rounded mb-2\"></div><!-- Modal for Card Positions --><div class=\"modal fade\" id=\"infoModal\" tabindex=\"-1\" aria-labelledby=\"infoModalLabel\" aria-hidden=\"true\"><div class=\"modal-dialog modal-lg\"><div class=\"modal-content\"><div class=\"modal-header\"><h5 class=\"text-2xl modal-title smythe-regular\" id=\"infoModalLabel\">Card Positions in the \"Mind, Body & Spirit\" Tarot Spread</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><table class=\"w-full border-collapse\"><thead><tr class=\"bg-gray-200 text-gray-700\"><th class=\"text-3xl p-4 text-left smythe-regular\">Position</th><th class=\"text-3xl p-4 text-center smythe-regular\">Meaning</th></tr></thead> <tbody><tr class=\"border-b border-gray-300\"><td class=\"text-2xl p-4 font-semibold smythe-regular\">MIND:</td><td class=\"text-2xl p-4 text-center old-standard-tt-regular text-justify\">The first card represents logic, reasoning, and your rational side. What are you thinking? Or: What is an area of reason you should pay attention to?</td></tr><tr class=\"border-b border-gray-300\"><td class=\"text-2xl p-4 font-semibold smythe-regular\">BODY:</td><td class=\"text-2xl p-4 text-center old-standard-tt-regular text-justify\">The second card represents health, fitness, sexuality, and activity. What are you doing? Or: What is an area of action you should think about?</td></tr><tr class=\"border-b border-gray-300\"><td class=\"text-2xl p-4 font-semibold smythe-regular\">SPIRIT:</td><td class=\"text-2xl p-4 text-center old-standard-tt-regular text-justify\">The third and last card represents emotion, creativity, spirituality, and love. What are you feeling? Or: What should you focus on for spiritual growth?</td></tr></tbody></table></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button></div></div></div></div><!-- Do Another Reading Button -->")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if len(selectedCards) == 3 {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button id=\"doAnotherReading\" hx-get=\"/reset-reading\" hx-target=\"body\" hx-swap=\"innerHTML\" class=\"mt-4 text-xl sm:text-2xl bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg  smythe-regular transition duration-300 ease-in-out\">Do Another Reading</button>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- Shuffled Cards Container --><div id=\"shuffled-cards\" class=\"relative h-36 sm:h-48 mt-2 flex justify-center items-center overflow-x-auto mx-auto\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,7 +60,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs("/select-card?card=" + card.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 92, Col: 56}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 75, Col: 56}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -61,7 +71,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Selected Cards Container --><!-- Selected Cards Container --><div id=\"selected-cards\" class=\"mt-2 grid grid-cols-1 sm:grid-cols-3 gap-1\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Selected Cards Container --><div id=\"selected-cards\" class=\"mt-2 grid grid-cols-1 sm:grid-cols-3 gap-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -94,7 +104,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs("/images/" + card.Image)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 143, Col: 45}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 98, Col: 45}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -107,7 +117,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 143, Col: 63}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 98, Col: 63}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -120,7 +130,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 146, Col: 78}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 101, Col: 78}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
@@ -133,7 +143,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(card.MeaningUp)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 147, Col: 94}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 102, Col: 94}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {
@@ -146,7 +156,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var7 string
 				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs("/card-detail?card=" + card.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 151, Col: 53}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 106, Col: 53}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 				if templ_7745c5c3_Err != nil {
@@ -158,17 +168,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				}
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Do Another Reading Button -->")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if len(selectedCards) == 3 {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button id=\"doAnotherReading\" hx-get=\"/reset-reading\" hx-target=\"body\" hx-swap=\"innerHTML\" class=\"mt-4 text-xl sm:text-2xl bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg w-full smythe-regular transition duration-300 ease-in-out\">Do Another Reading</button>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Modal for Extended Card Description --><div class=\"modal fade\" id=\"cardModal\" tabindex=\"-1\" aria-labelledby=\"cardModalLabel\" aria-hidden=\"true\"><div class=\"modal-dialog modal-lg modal-dialog-centered\"><div class=\"modal-content\"><div class=\"modal-header\"><h5 class=\"modal-title text-center\" id=\"cardModalLabel\">Card Title</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><p class=\"text-lg old-standard-tt-bold mb-2\">Description:</p><p id=\"modal-desc\" class=\"text-base old-standard-tt-regular mb-4\"></p><hr class=\"my-4 border-gray-300\"><p class=\"text-lg old-standard-tt-bold mb-2\">Meaning (Upright):</p><p id=\"modal-meaning\" class=\"text-base old-standard-tt-regular\"></p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button></div></div></div></div><!-- External Scripts --><script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js\"></script><script src=\"/static/script/htmx.min.js\"></script><script src=\"/static/script/script.js\"></script></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><!-- Modal for Extended Card Description --><div class=\"modal fade\" id=\"cardModal\" tabindex=\"-1\" aria-labelledby=\"cardModalLabel\" aria-hidden=\"true\"><div class=\"modal-dialog modal-lg modal-dialog-centered\"><div class=\"modal-content\"><div class=\"modal-header\"><h5 class=\"modal-title text-center\" id=\"cardModalLabel\">Card Title</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><p class=\"text-lg old-standard-tt-bold mb-2\">Description:</p><p id=\"modal-desc\" class=\"text-base old-standard-tt-regular mb-4\"></p><hr class=\"my-4 border-gray-300\"><p class=\"text-lg old-standard-tt-bold mb-2\">Meaning (Upright):</p><p id=\"modal-meaning\" class=\"text-base old-standard-tt-regular\"></p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button></div></div></div></div><!-- External Scripts --><script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js\"></script><script src=\"/static/script/htmx.min.js\"></script><script src=\"/static/script/script.js\"></script></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
