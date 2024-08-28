@@ -26,40 +26,40 @@ func Modal(cardName string, description string, meaningUp string) templ.Componen
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\"><div class=\"modal-content\"><div class=\"modal-header\"><h5 class=\"modal-title smythe-regular text-3xl\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"modal-dialog modal-lg modal-dialog-centered text-center\" role=\"document\"><div class=\"modal-content\"><div class=\"modal-header text-center\"><h5 class=\"modal-title smythe-regular text-3xl text-center\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(cardName)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 7, Col: 74}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 7, Col: 86}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Description:</p><p class=\"text-2xl old-standard-tt-regular mb-4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><p class=\"text-2xl old-standard-tt-bold mb-2 text-justify\">Description:</p><p class=\"text-2xl old-standard-tt-regular mb-4 text-justify\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 12, Col: 78}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 12, Col: 91}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><p class=\"text-2xl old-standard-tt-bold mb-2\">Meaning (Upright):</p><p class=\"text-2xl old-standard-tt-regular\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><p class=\"text-2xl old-standard-tt-bold mb-2 text-justify\">Meaning (Upright):</p><p class=\"text-2xl old-standard-tt-regular text-justify\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(meaningUp)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 14, Col: 71}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 14, Col: 84}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {

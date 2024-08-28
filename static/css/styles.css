@@ -158,8 +158,8 @@ p {
 /* Flip card container */
 .flip-card {
     background-color: transparent;
-    width: 18rem; /* New width */
-    height: 31.5rem; 
+    width: 13rem; /* New width */
+    height: 22rem; 
     perspective: 1000px; /* 3D effect */
     margin: 0 auto;
 }
