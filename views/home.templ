@@ -13,21 +13,22 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 			<link href="/static/css/styles.css" rel="stylesheet"/>
 			<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 		</head>
-		<body class="bg-gray-100 text-center py-4">
-			<div class="container mx-auto px-2">
-				<h1 class="text-5xl font-bold mb-2">Rider Waite Smith (Mind, Body & Spirit)</h1>
+		<body class="bg-gray-100 text-center py-2 px-2">
+			<div class="container mx-auto max-w-4xl">
+				<h1 class="text-2xl sm:text-3xl font-bold mb-2">Rider Waite Smith (Mind, Body & Spirit)</h1>
 				<!-- Button to trigger the modal -->
-				<button type="button" class="text-2xl btn btn-info mb-4 smythe-regular" data-bs-toggle="modal" data-bs-target="#infoModal">
+				<button type="button" class="text-xl sm:text-2xl btn btn-info mb-2 smythe-regular" data-bs-toggle="modal" data-bs-target="#infoModal">
 					Meaning of Card Positions?
 				</button>
-				<div class="w-full max-w-lg mx-auto mb-4">
+				<div class="w-full max-w-lg mx-auto mb-2">
 					<input type="text" placeholder="Enter your question or subject here (optional)" id="tarot-question" class="w-full p-2 border border-gray-300 rounded mb-2"/>
-					<!-- Shuffle/Stop Shuffle Button -->
-					if isShuffling {
-						<button hx-get="/stop-shuffle" hx-target="body" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full">Stop Shuffle</button>
-					} else {
-						<button id="shuffleButton" class="text-2xl bg-purple-500 text-white px-4 py-2 rounded-lg w-full smythe-regular">Shuffle Cards</button>
-					}
+					// <!-- Shuffle/Stop Shuffle Button -->
+					// if isShuffling {
+					// 	<button hx-get="/stop-shuffle" hx-target="body" class="bg-red-500 text-white px-4 py-2 rounded-lg w-full">Stop Shuffle</button>
+					// } else {
+					// 	<button id="shuffleButton" class="text-2xl bg-purple-500 text-white px-4 py-2 rounded-lg w-full smythe-regular">Shuffle Cards</button>
+					// }
+					<button id="shuffleButton" class="text-xl sm:text-2xl bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg w-full smythe-regular transition duration-300 ease-in-out">Shuffle Cards</button>
 				</div>
 				<!-- Modal for Card Positions -->
 				<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
@@ -68,23 +69,59 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 					</div>
 				</div>
 				<!-- Shuffled Cards Container -->
-				<div id="shuffled-cards" class="relative h-48 mt-4 flex justify-center items-center overflow-x-auto max-w-[1300px] mx-auto">
+				// <div id="shuffled-cards" class="relative h-48 mt-4 flex justify-center items-center overflow-x-auto max-w-[1300px] mx-auto">
+				// 	for _, card := range cards {
+				// 		<div class="card-container" style="--card-index: {index};">
+				// 			if !isShuffling {
+				// 				<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-transparent" onclick="openModal('{ card.Name }', '{ card.MeaningUp }')">
+				// 					<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
+				// 				</button>
+				// 			} else {
+				// 				<div class="bg-gray-400 p-1 rounded-lg animate-shuffle">
+				// 					<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
+				// 				</div>
+				// 			}
+				// 		</div>
+				// 	}
+				// </div>
+				<div id="shuffled-cards" class="relative h-36 sm:h-48 mt-2 flex justify-center items-center overflow-x-auto mx-auto">
 					for _, card := range cards {
 						<div class="card-container" style="--card-index: {index};">
-							if !isShuffling {
-								<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-transparent" onclick="openModal('{ card.Name }', '{ card.MeaningUp }')">
-									<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
-								</button>
-							} else {
-								<div class="bg-gray-400 p-1 rounded-lg animate-shuffle">
-									<img src="/images/CardBacks.png" alt="Card Back" class="w-full h-auto"/>
-								</div>
-							}
+							<button hx-get={ "/select-card?card=" + card.Name } hx-target="body" class="bg-transparent" onclick="openModal('{ card.Name }', '{ card.MeaningUp }')">
+								<img src="/images/CardBacks.png" alt="Card Back" class="w-24 sm:w-32 h-auto"/>
+							</button>
 						</div>
 					}
 				</div>
 				<!-- Selected Cards Container -->
-				<div id="selected-cards" class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-1">
+				// <div id="selected-cards" class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-1">
+				// 	if selectedCards != nil {
+				// 		for _, card := range selectedCards {
+				// 			<div class="flip-card">
+				// 				<div class="flip-card-inner">
+				// 					<div class="flip-card-front">
+				// 						<img src={ "/images/" + card.Image } alt={ card.Name } class="w-full h-auto"/>
+				// 					</div>
+				// 					<div class="flip-card-back flex flex-col justify-between p-4">
+				// 						<h2 class="text-md font-semibold text-white">{ card.Name }</h2>
+				// 						<p class="text-sm text-white flex-grow overflow-y-auto">{ card.MeaningUp }</p>
+				// 						<button
+				// 							type="button"
+				// 							class="btn btn-primary mt-2 old-standard-tt-regular text-lg"
+				// 							hx-get={ "/card-detail?card=" + card.Name }
+				// 							hx-target="#cardModal .modal-content"
+				// 							data-bs-toggle="modal"
+				// 							data-bs-target="#cardModal"
+				// 						>
+				// 							View Full Description
+				// 						</button>
+				// 					</div>
+				// 				</div>
+				// 			</div>
+				// 		}
+				// 	}
+				// </div>
+				<div id="selected-cards" class="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-1">
 					if selectedCards != nil {
 						for _, card := range selectedCards {
 							<div class="flip-card">
@@ -92,12 +129,12 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 									<div class="flip-card-front">
 										<img src={ "/images/" + card.Image } alt={ card.Name } class="w-full h-auto"/>
 									</div>
-									<div class="flip-card-back flex flex-col justify-between p-4">
-										<h2 class="text-md font-semibold text-white">{ card.Name }</h2>
-										<p class="text-sm text-white flex-grow overflow-y-auto">{ card.MeaningUp }</p>
+									<div class="flip-card-back flex flex-col justify-between p-2">
+										<h2 class="text-sm sm:text-md font-semibold text-white">{ card.Name }</h2>
+										<p class="text-xs sm:text-sm text-white flex-grow overflow-y-auto">{ card.MeaningUp }</p>
 										<button
 											type="button"
-											class="btn btn-primary mt-2 old-standard-tt-regular text-lg"
+											class="btn btn-primary mt-1 old-standard-tt-regular text-sm sm:text-lg"
 											hx-get={ "/card-detail?card=" + card.Name }
 											hx-target="#cardModal .modal-content"
 											data-bs-toggle="modal"
@@ -111,6 +148,10 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 						}
 					}
 				</div>
+				<!-- Do Another Reading Button -->
+				if len(selectedCards) == 3 {
+					<button id="doAnotherReading" hx-get="/reset-reading" hx-target="body" hx-swap="innerHTML" class="mt-4 text-xl sm:text-2xl bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg w-full smythe-regular transition duration-300 ease-in-out">Do Another Reading</button>
+				}
 			</div>
 			<!-- Modal for Extended Card Description -->
 			<div class="modal fade" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">

@@ -78,3 +78,4 @@ func DeleteCard(c *gin.Context) {
     database.DB.Delete(&card)
     c.JSON(http.StatusOK, gin.H{"data": "Card deleted"})
 }
+
