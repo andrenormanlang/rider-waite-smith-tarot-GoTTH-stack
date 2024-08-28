@@ -1,21 +1,22 @@
 package views
 
 templ Modal(cardName string, description string, meaningUp string) {
-    <div class="modal-dialog modal-lg modal-dialog-centered text-center" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title smythe-regular text-3xl text-center">{ cardName }</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content bg-gray-900 text-purple-400">
+            <div class="modal-header">
+                <h5 class="modal-title smythe-regular text-3xl w-100 text-center" id="cardModalLabel">{ cardName }</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-6 py-4">
-                <p class="text-2xl old-standard-tt-bold mb-2 text-justify">Description:</p>
-                <p class="text-2xl old-standard-tt-regular mb-4 text-justify">{ description }</p>
-                <p class="text-2xl old-standard-tt-bold mb-2 text-justify">Meaning (Upright):</p>
-                <p class="text-2xl old-standard-tt-regular text-justify">{ meaningUp }</p>
+                <p class="text-2xl old-standard-tt-bold mb-2">Description:</p>
+                <p class="text-xl old-standard-tt-regular mb-4">{ description }</p>
+                <hr class="my-4 border-gray-600"/>
+                <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Upright):</p>
+                <p class="text-xl old-standard-tt-regular">{ meaningUp }</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+            // <div class="modal-footer">
+            //     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            // </div>
         </div>
     </div>
 }

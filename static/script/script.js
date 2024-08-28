@@ -98,6 +98,14 @@ function swapCards(card1, card2) {
     }, 500);
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var modals = document.querySelectorAll('.modal');
+    modals.forEach(function(modal) {
+        new bootstrap.Modal(modal);
+    });
+});
+
+
 function saveSelectedCardToLocalStorage(cardName) {
     let selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
     selectedCards.push(cardName);
