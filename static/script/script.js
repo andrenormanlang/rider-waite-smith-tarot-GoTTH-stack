@@ -1,3 +1,5 @@
+let isShuffling = false; // Declare once at the top
+
 document.addEventListener("DOMContentLoaded", function() {
     const cards = document.querySelectorAll('.card');
 
@@ -24,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
     loadSelectedCardsFromLocalStorage();
 });
 
-let isShuffling = false;
 let shuffleInterval;
 
 function toggleShuffle() {
@@ -33,6 +34,10 @@ function toggleShuffle() {
     } else {
         startShuffle();
     }
+}
+
+function openModal(cardName, cardMeaning) {
+    // Implement the modal opening logic here
 }
 
 function startShuffle() {
@@ -98,15 +103,34 @@ function saveSelectedCardToLocalStorage(cardName) {
     selectedCards.push(cardName);
     localStorage.setItem('selectedCards', JSON.stringify(selectedCards));
 
+    if (selectedCards.length >= 1) {
+        hideShuffleButton(); // Hide the shuffle button after selecting the first card
+    }
+
     if (selectedCards.length >= 3) {
         showDoAnotherReadingButton();
     }
 }
 
+function hideShuffleButton() {
+    const shuffleButton = document.getElementById('shuffleButton');
+    if (shuffleButton) {
+        shuffleButton.style.display = 'none';
+    }
+}
+
+function showShuffleButton() {
+    const shuffleButton = document.getElementById('shuffleButton');
+    if (shuffleButton) {
+        shuffleButton.style.display = 'block';
+    }
+}
+
 function loadSelectedCardsFromLocalStorage() {
     const selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
-    // Here you would typically update the UI to reflect the selected cards
-    // This depends on how your server-side rendering works with HTMX
+    if (selectedCards.length >= 1) {
+        hideShuffleButton(); // Hide shuffle button if at least one card is selected
+    }
     if (selectedCards.length >= 3) {
         showDoAnotherReadingButton();
     }
@@ -133,8 +157,8 @@ function doAnotherReading() {
         },
         success: function() {
             console.log("Reset reading successful");
-            // Force a re-render of the page
-            location.reload();
+            window.location.reload();
+            showShuffleButton(); // Re-show the shuffle button after reset
         },
         error: function(xhr, status, error) {
             console.error("Error resetting reading:", status, error);
@@ -142,17 +166,14 @@ function doAnotherReading() {
     });
 }
 
-// Assuming you have a function that's called when a card is selected
 function selectCard(cardName) {
     saveSelectedCardToLocalStorage(cardName);
-    // Check if we've selected 3 cards
     let selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');
     if (selectedCards.length >= 3) {
         showDoAnotherReadingButton();
     }
 }
 
-// Add this function to help with debugging
 function logLocalStorage() {
     console.log("Current localStorage:", JSON.parse(localStorage.getItem('selectedCards') || '[]'));
 }
