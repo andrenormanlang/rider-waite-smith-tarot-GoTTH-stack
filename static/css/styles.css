@@ -81,8 +81,6 @@ p {
     animation: swap 0.5s ease-in-out;
 }
 
-
-
 /* Custom styles to fit everything on one page */
 body {
     padding: 4px;
@@ -242,4 +240,37 @@ p {
 
 .flip-card-back button {
     margin-top: 0.5rem; /* Add some space between the text and the button */
+}
+
+.modal-content {
+    background-color: #1e1e1e; /* Dark gray background */
+    color: #f0f0f0; /* Light gray text */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space around content */
+}
+
+.modal-header {
+    border-bottom: 1px solid #444; /* Light border for header */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-header .modal-title {
+    color: #fff; /* White color for the title */
+}
+
+.modal-body {
+    color: #ddd; /* Slightly lighter gray for body text */
+    font-size: 1.1rem; /* Slightly increase font size */
+    line-height: 1.6; /* Improve line spacing for readability */
+}
+
+.modal-body hr {
+    border-color: #444; /* Match the divider color with header border */
+}
+
+.modal-footer {
+    border-top: 1px solid #444; /* Light border for footer */
+    margin-top: 15px;
+    padding-top: 10px;
 }

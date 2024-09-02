@@ -8,7 +8,7 @@ package views
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Modal(cardName string, description string, meaningUp string) templ.Component {
+func CardDetailModal(cardName string, description string, meaningUp string, meaningRev string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -39,7 +39,7 @@ func Modal(cardName string, description string, meaningUp string) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><button type=\"button\" class=\"btn-close btn-close-white\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Description:</p><p class=\"text-xl old-standard-tt-regular mb-4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><button type=\"button\" class=\"btn-close btn-close-white\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\" style=\"max-height: 70vh; overflow-y: auto;\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Description:</p><p class=\"text-xl old-standard-tt-regular mb-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -52,16 +52,29 @@ func Modal(cardName string, description string, meaningUp string) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Meaning (Upright):</p><p class=\"text-xl old-standard-tt-regular\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Meaning (Upright):</p><p class=\"text-xl old-standard-tt-regular mb-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(meaningUp)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 15, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 15, Col: 75}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Meaning (Reversed):</p><p class=\"text-xl old-standard-tt-regular\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var5 string
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(meaningRev)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 18, Col: 71}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -72,3 +85,31 @@ func Modal(cardName string, description string, meaningUp string) templ.Componen
 		return templ_7745c5c3_Err
 	})
 }
+
+// package views
+
+// templ CardDetailModal(cardName string, description string, meaningUp string, meaningRev string) {
+//     <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+//         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+//             <div class="modal-content bg-gray-900 text-purple-400">
+//                 <div class="modal-header">
+//                     <h5 class="modal-title smythe-regular text-3xl w-100 text-center" id="cardModalLabel">{ cardName }</h5>
+//                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+//                 </div>
+//                 <div class="modal-body px-6 py-4" style="max-height: 70vh; overflow-y: auto;">
+//                     <p class="text-2xl old-standard-tt-bold mb-2">Description:</p>
+//                     <p class="text-xl old-standard-tt-regular mb-4">{ description }</p>
+//                     <hr class="my-4 border-gray-600"/>
+//                     <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Upright):</p>
+//                     <p class="text-xl old-standard-tt-regular mb-4">{ meaningUp }</p>
+//                     <hr class="my-4 border-gray-600"/>
+//                     <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Reversed):</p>
+//                     <p class="text-xl old-standard-tt-regular">{ meaningRev }</p>
+//                 </div>
+//                 <div class="modal-footer">
+//                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// }

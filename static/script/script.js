@@ -105,6 +105,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('htmx:afterSwap', (event) => {
+    if (event.detail.target.id === "cardModal") {
+        var modalElement = document.getElementById('cardModal');
+        var modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    }
+});
+
+function openModal(cardName, cardMeaning) {
+    // Assume `cardModal` is already in the DOM
+    const modalElement = document.getElementById('cardModal');
+    const modalTitle = modalElement.querySelector('.modal-title');
+    const modalBody = modalElement.querySelector('.modal-body');
+
+    // Update the modal content before showing
+    modalTitle.textContent = cardName;
+    modalBody.querySelector('.description').textContent = cardMeaning;
+
+    // Show the modal
+    var modal = new bootstrap.Modal(modalElement);
+    modal.show();
+}
+
 
 function saveSelectedCardToLocalStorage(cardName) {
     let selectedCards = JSON.parse(localStorage.getItem('selectedCards') || '[]');

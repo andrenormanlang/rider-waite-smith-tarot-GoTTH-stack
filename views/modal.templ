@@ -1,22 +1,50 @@
 package views
 
-templ Modal(cardName string, description string, meaningUp string) {
+templ CardDetailModal(cardName string, description string, meaningUp string, meaningRev string) {
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content bg-gray-900 text-purple-400">
             <div class="modal-header">
                 <h5 class="modal-title smythe-regular text-3xl w-100 text-center" id="cardModalLabel">{ cardName }</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-6 py-4">
+            <div class="modal-body px-6 py-4" style="max-height: 70vh; overflow-y: auto;">
                 <p class="text-2xl old-standard-tt-bold mb-2">Description:</p>
                 <p class="text-xl old-standard-tt-regular mb-4">{ description }</p>
                 <hr class="my-4 border-gray-600"/>
                 <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Upright):</p>
-                <p class="text-xl old-standard-tt-regular">{ meaningUp }</p>
+                <p class="text-xl old-standard-tt-regular mb-4">{ meaningUp }</p>
+                <hr class="my-4 border-gray-600"/>
+                <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Reversed):</p>
+                <p class="text-xl old-standard-tt-regular">{ meaningRev }</p>
             </div>
-            // <div class="modal-footer">
-            //     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            // </div>
         </div>
-    </div>
+    </div> 
 }
+
+// package views
+
+// templ CardDetailModal(cardName string, description string, meaningUp string, meaningRev string) {
+//     <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+//         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+//             <div class="modal-content bg-gray-900 text-purple-400">
+//                 <div class="modal-header">
+//                     <h5 class="modal-title smythe-regular text-3xl w-100 text-center" id="cardModalLabel">{ cardName }</h5>
+//                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+//                 </div>
+//                 <div class="modal-body px-6 py-4" style="max-height: 70vh; overflow-y: auto;">
+//                     <p class="text-2xl old-standard-tt-bold mb-2">Description:</p>
+//                     <p class="text-xl old-standard-tt-regular mb-4">{ description }</p>
+//                     <hr class="my-4 border-gray-600"/>
+//                     <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Upright):</p>
+//                     <p class="text-xl old-standard-tt-regular mb-4">{ meaningUp }</p>
+//                     <hr class="my-4 border-gray-600"/>
+//                     <p class="text-2xl old-standard-tt-bold mb-2">Meaning (Reversed):</p>
+//                     <p class="text-xl old-standard-tt-regular">{ meaningRev }</p>
+//                 </div>
+//                 <div class="modal-footer">
+//                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// }
