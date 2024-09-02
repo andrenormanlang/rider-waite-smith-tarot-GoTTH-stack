@@ -12,4 +12,5 @@ type State struct {
     FullDeck     []Card
     SelectedCards []Card
     IsShuffling  bool
+    RevealIndex   int 
 }

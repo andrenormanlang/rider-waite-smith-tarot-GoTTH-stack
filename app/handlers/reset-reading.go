@@ -21,7 +21,7 @@ func ResetReadingHandler(state *common.State) gin.HandlerFunc {
          c.Header("HX-Refresh", "true")
 
         // Re-render the entire page
-        err := views.Home(state.FullDeck, state.SelectedCards, nil, state.IsShuffling).Render(c.Request.Context(), c.Writer)
+        err := views.Home(state.FullDeck, state.SelectedCards, nil, state.IsShuffling, state.RevealIndex).Render(c.Request.Context(), c.Writer)
         if err != nil {
             log.Printf("Error rendering home template: %v", err)
             c.String(http.StatusInternalServerError, "Internal Server Error")

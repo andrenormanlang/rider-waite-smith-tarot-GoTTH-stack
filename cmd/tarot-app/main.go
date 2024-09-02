@@ -21,6 +21,7 @@ func main() {
         FullDeck:     fullDeck,   // Set FullDeck from the database
         SelectedCards: []common.Card{},
         IsShuffling:  false,
+        RevealIndex:   0,
     }
 
     // Register all application routes
