@@ -17,19 +17,19 @@
 //     }
 // }
 
-package database
+// package database
 
-import (
-    // "fmt"
-    "log"
-    "os"
-    "gorm.io/driver/postgres"
-    "gorm.io/gorm"
-)
+// import (
+//     // "fmt"
+//     "log"
+//     "os"
+//     "gorm.io/driver/postgres"
+//     "gorm.io/gorm"
+// )
 
-var DB *gorm.DB
+// var DB *gorm.DB
 
-func ConnectDatabase() {
+// func ConnectDatabase() {
     // host := os.Getenv("DB_HOST")
     // user := os.Getenv("DB_USER")
     // password := os.Getenv("DB_PASSWORD")
@@ -45,11 +45,39 @@ func ConnectDatabase() {
     //     port = "5432"
     // }
 
-    dsn := os.Getenv("DATABASE_URL")
+    // dsn := os.Getenv("DATABASE_URL")
 
     // dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Europe/Stockholm", host, user, password, dbname, port)
 
+//     var err error
+//     DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+//     if err != nil {
+//         log.Fatal("Failed to connect to database: ", err)
+//     }
+// }
+
+package database
+
+import (
+    "log"
+    "os"
+    "gorm.io/driver/postgres"
+    "gorm.io/gorm"
+)
+
+var DB *gorm.DB
+
+func ConnectDatabase() {
+    // Retrieve the DATABASE_URL from the environment variables
+    dsn := os.Getenv("DATABASE_URL")
+    
+    // Check if the DATABASE_URL is empty
+    if dsn == "" {
+        log.Fatal("DATABASE_URL is not set in the environment variables")
+    }
+
     var err error
+    // Connect to the database using the connection string
     DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {
         log.Fatal("Failed to connect to database: ", err)
