@@ -20,7 +20,7 @@
 package database
 
 import (
-    "fmt"
+    // "fmt"
     "log"
     "os"
     "gorm.io/driver/postgres"
@@ -30,22 +30,24 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-    host := os.Getenv("DB_HOST")
-    user := os.Getenv("DB_USER")
-    password := os.Getenv("DB_PASSWORD")
-    dbname := os.Getenv("DB_NAME")
-    port := os.Getenv("DB_PORT")
+    // host := os.Getenv("DB_HOST")
+    // user := os.Getenv("DB_USER")
+    // password := os.Getenv("DB_PASSWORD")
+    // dbname := os.Getenv("DB_NAME")
+    // port := os.Getenv("DB_PORT")
 
-    if host == "" {
-        // Fallback to default values if environment variables are not set
-        host = "localhost"
-        user = "postgres"
-        password = "shiva7"
-        dbname = "tarotdb"
-        port = "5432"
-    }
+    // if host == "" {
+    //     // Fallback to default values if environment variables are not set
+    //     host = "localhost"
+    //     user = "postgres"
+    //     password = "shiva7"
+    //     dbname = "tarotdb"
+    //     port = "5432"
+    // }
 
-    dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Europe/Stockholm", host, user, password, dbname, port)
+    dsn := os.Getenv("DATABASE_URL")
+
+    // dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Europe/Stockholm", host, user, password, dbname, port)
 
     var err error
     DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
