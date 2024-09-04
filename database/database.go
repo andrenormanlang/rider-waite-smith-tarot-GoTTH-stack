@@ -60,7 +60,6 @@ package database
 
 import (
     "log"
-    "os"
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
 )
@@ -68,14 +67,9 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-    // Retrieve the DATABASE_URL from the environment variables
-    dsn := os.Getenv("DATABASE_URL")
+    // Hardcoded PostgreSQL connection string (this is not recommended for production)
+    dsn := "postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o"
     
-    // Check if the DATABASE_URL is empty
-    if dsn == "" {
-        log.Fatal("DATABASE_URL is not set in the environment variables")
-    }
-
     var err error
     // Connect to the database using the connection string
     DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
