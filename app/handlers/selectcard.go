@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"andrenormanlang/tarot-go-htmx/common"
-	"andrenormanlang/tarot-go-htmx/utils"  // Import the utils package where GenerateImagePath is located
 	"andrenormanlang/tarot-go-htmx/views"
 	"fmt"
 	"net/http"
@@ -12,45 +11,41 @@ import (
 )
 
 func SelectCard(state *common.State) gin.HandlerFunc {
-    return func(c *gin.Context) {
-        if !state.IsShuffling && len(state.SelectedCards) < 3 {
-            cardName, _ := url.QueryUnescape(c.Query("card"))
-            card := findCardByName(cardName, state.FullDeck)
+	return func(c *gin.Context) {
+		if !state.IsShuffling && len(state.SelectedCards) < 3 {
+			cardName, _ := url.QueryUnescape(c.Query("card"))
+			card := findCardByName(cardName, state.FullDeck)
 
-            // Check if the card is already selected
-            alreadySelected := false
-            for _, selectedCard := range state.SelectedCards {
-                if selectedCard.Name == card.Name {
-                    alreadySelected = true
-                    break
-                }
-            }
+			// Check if the card is already selected
+			alreadySelected := false
+			for _, selectedCard := range state.SelectedCards {
+				if selectedCard.Name == card.Name {
+					alreadySelected = true
+					break
+				}
+			}
 
-            if !alreadySelected {
-                // Generate the correct image path
-                imagePath := utils.GenerateImagePath(card.Name)
-                card.Image = imagePath
-                fmt.Printf("Selected card: %s, Image path: %s\n", card.Name, card.Image)
+			if !alreadySelected {
+				// Now using the image field directly from the card JSON object
+				fmt.Printf("Selected card: %s, Image path: %s\n", card.Name, card.Image)
 
-                state.SelectedCards = append(state.SelectedCards, card)
-            }
-        }
+				state.SelectedCards = append(state.SelectedCards, card)
+			}
+		}
 
-        err := views.Home(state.FullDeck, state.SelectedCards, nil, state.IsShuffling, state.RevealIndex).Render(c.Request.Context(), c.Writer)
-        if err != nil {
-            c.String(http.StatusInternalServerError, "Error rendering template: %v", err)
-            return
-        }
-    }
+		err := views.Home(state.FullDeck, state.SelectedCards, nil, state.IsShuffling, state.RevealIndex).Render(c.Request.Context(), c.Writer)
+		if err != nil {
+			c.String(http.StatusInternalServerError, "Error rendering template: %v", err)
+			return
+		}
+	}
 }
-
 
 func findCardByName(name string, fullDeck []common.Card) common.Card {
-    for _, card := range fullDeck {
-        if card.Name == name {
-            return card
-        }
-    }
-    return common.Card{}
+	for _, card := range fullDeck {
+		if card.Name == name {
+			return card
+		}
+	}
+	return common.Card{}
 }
-

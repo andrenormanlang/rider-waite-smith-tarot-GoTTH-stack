@@ -12,7 +12,7 @@ templ CardDetailModal(card common.Card) {
             <div class="modal-body px-6 py-4" style="max-height: 70vh; overflow-y: auto;">
                 <!-- Display the card image -->
                 <div class="text-center mb-4">
-                    <img src={ "/images/" + card.Image } alt={ card.Name } class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;" />
+                    <img src={ card.Image } alt={ card.Name } class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;" />
                 </div>
                 <p class="text-2xl old-standard-tt-bold mb-2">Description:</p>
                 <p class="text-xl old-standard-tt-regular mb-4">{ card.Description }</p>

@@ -37,6 +37,11 @@ BUILD_DIR=./tmp
 # Load environment variables from .env file
 export $(shell sed 's/=.*//' .env)
 
+.PHONY: clean
+clean:
+	@rm -f ./tmp/app-main.exe ./tmp/admin-main.exe
+	@echo "Cleaned old binaries."
+
 .PHONY: tailwind-watch
 tailwind-watch:
 	npx tailwindcss -i ./static/css/input.css -o ./static/css/style.css --watch
@@ -66,7 +71,9 @@ dev-admin:
 # Run both frontend and backend apps in parallel
 .PHONY: dev-all
 dev-all:
-	$(MAKE) dev-app & $(MAKE) dev-admin
+	$(MAKE) clean
+	$(MAKE) dev-app & 
+	$(MAKE) dev-admin
 
 # Build both frontend and backend apps for production
 .PHONY: build
