@@ -8,11 +8,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DB_HOST=dpg-crc2gfi6l47c73dafui0-a 
-      - DB_USER=tarotdb_881o_user
-      - DB_PASSWORD=heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK
-      - DB_NAME=tarotdb_881o
-      - DB_PORT=5432
+      - DATABASE_URL=postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o
     networks:
       - tarot-network
 
@@ -23,16 +19,9 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - DB_HOST=dpg-crc2gfi6l47c73dafui0-a # Update this with the actual hostname
-      - DB_USER=tarotdb_881o_user
-      - DB_PASSWORD=heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK
-      - DB_NAME=tarotdb_881o
-      - DB_PORT=5432
+      - DATABASE_URL=postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o
     networks:
       - tarot-network
-
-networks:
-  tarot-network:
 
 volumes:
   postgres_data:

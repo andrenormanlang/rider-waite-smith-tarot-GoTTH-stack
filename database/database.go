@@ -68,7 +68,7 @@ var DB *gorm.DB
 
 func ConnectDatabase() {
     // Hardcoded PostgreSQL connection string (this is not recommended for production)
-    dsn := "postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o"
+    dsn := "postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfl6l47c73dafui0-a.frankfurt-postgres.render.com/tarotdb_881o"
     
     var err error
     // Connect to the database using the connection string
