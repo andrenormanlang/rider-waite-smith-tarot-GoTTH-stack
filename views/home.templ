@@ -138,8 +138,8 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 
             <!-- Modal for Extended Card Description -->
 			<div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
-            @CardDetailModal("", "", "", "")		
-			</div>
+                @CardDetailModal(common.Card{})
+            </div>
             
             <!-- External Scripts -->
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>

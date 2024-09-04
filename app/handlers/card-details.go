@@ -18,9 +18,11 @@ func RevealCardDetail(state *common.State) gin.HandlerFunc {
             return
         }
 
-        err := views.CardDetailModal(card.Name, card.Description, card.MeaningUp, card.MeaningRev ).Render(c.Request.Context(), c.Writer)
+        // Pass the entire `card` object to the template
+        err := views.CardDetailModal(card).Render(c.Request.Context(), c.Writer)
         if err != nil {
             c.String(http.StatusInternalServerError, "Error rendering modal template: %v", err)
         }
     }
 }
+
