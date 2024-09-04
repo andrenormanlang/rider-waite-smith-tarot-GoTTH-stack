@@ -2,35 +2,37 @@ version: '3.8'
 
 services:
   tarot-app:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile  # Use the unified Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
       - db
     environment:
-      - DB_HOST=db
+      - DB_HOST=localhost              # Use 'db' as the database host
       - DB_USER=postgres
-      - DB_PASSWORD=example
+      - DB_PASSWORD=shiva7
       - DB_NAME=tarotdb
+      - DB_PORT=5432
       - PORT=8080
     networks:
       - tarot-network
 
   tarot-admin-app:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile  # Use the unified Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "8081:8081"
     depends_on:
       - db
     environment:
-      - DB_HOST=db
+      - DB_HOST=db              # Use 'db' as the database host
       - DB_USER=postgres
       - DB_PASSWORD=example
       - DB_NAME=tarotdb
+      - DB_PORT=5432
       - PORT=8081
     networks:
       - tarot-network
@@ -39,7 +41,7 @@ services:
     image: postgres:14-alpine
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
+      POSTGRES_PASSWORD: shiva7
       POSTGRES_DB: tarotdb
     ports:
       - "5432:5432"

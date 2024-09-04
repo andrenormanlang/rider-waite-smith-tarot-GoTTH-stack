@@ -32,6 +32,10 @@
 # Go parameters
 APP_NAME=cmd/tarot-app
 ADMIN_NAME=cmd/tarot-admin-app
+BUILD_DIR=./tmp
+
+# Load environment variables from .env file
+export $(shell sed 's/=.*//' .env)
 
 .PHONY: tailwind-watch
 tailwind-watch:
@@ -45,18 +49,34 @@ tailwind-build:
 templ-generate:
 	templ generate
 
+# Build the frontend (tarot-app) and run it with Air (live reloading)
 .PHONY: dev-app
 dev-app:
-	go build -o ./tmp/app-main.exe ./cmd/tarot-app/main.go && air -c app.air.toml
+	@echo "Running frontend app..."
+	@go build -o $(BUILD_DIR)/app-main.exe ./cmd/tarot-app/main.go
+	@air -c app.air.toml
 
+# Build the backend (tarot-admin-app) and run it with Air (live reloading)
 .PHONY: dev-admin
 dev-admin:
-	go build -o ./tmp/admin-main.exe ./cmd/tarot-admin-app/main.go && air -c admin.air.toml
+	@echo "Running admin app..."
+	@go build -o $(BUILD_DIR)/admin-main.exe ./cmd/tarot-admin-app/main.go
+	@air -c admin.air.toml
 
+# Run both frontend and backend apps in parallel
 .PHONY: dev-all
 dev-all:
-	make dev-app & make dev-admin
+	$(MAKE) dev-app & $(MAKE) dev-admin
 
+# Build both frontend and backend apps for production
 .PHONY: build
 build:
-	make tailwind-build && make templ-generate && go build -o ./tmp/app-main.exe ./cmd/tarot-app/main.go && go build -o ./tmp/admin-main.exe ./cmd/tarot-admin-app/main.go
+	$(MAKE) tailwind-build && $(MAKE) templ-generate
+	@go build -o $(BUILD_DIR)/app-main.exe ./cmd/tarot-app/main.go
+	@go build -o $(BUILD_DIR)/admin-main.exe ./cmd/tarot-admin-app/main.go
+
+# Clean up binaries and temporary files
+.PHONY: clean
+clean:
+	@rm -rf $(BUILD_DIR)/*
+	@echo "Cleaned up build files."
