@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   tarot-app:
@@ -7,15 +7,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      - db
-    env_file:
-      - .env   # Add this line to load the .env file
     environment:
-      - DB_HOST=db              # Use 'db' as the database host
-      - DB_USER=postgres
-      - DB_PASSWORD=root
-      - DB_NAME=tarotdb
+      - DB_HOST=dpg-crc2gfi6l47c73dafui0-a 
+      - DB_USER=tarotdb_881o_user
+      - DB_PASSWORD=heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK
+      - DB_NAME=tarotdb_881o
       - DB_PORT=5432
     networks:
       - tarot-network
@@ -26,29 +22,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8081:8081"
-    depends_on:
-      - db
-    env_file:
-      - .env  # Add this line to load the .env file
     environment:
-      - DB_HOST=db              # Use 'db' as the database host
-      - DB_USER=postgres
-      - DB_PASSWORD=root
-      - DB_NAME=tarotdb
+      - DB_HOST=dpg-crc2gfi6l47c73dafui0-a # Update this with the actual hostname
+      - DB_USER=tarotdb_881o_user
+      - DB_PASSWORD=heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK
+      - DB_NAME=tarotdb_881o
       - DB_PORT=5432
-    networks:
-      - tarot-network
-
-  db:
-    image: postgres:14-alpine
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: tarotdb
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     networks:
       - tarot-network
 
@@ -57,3 +36,66 @@ networks:
 
 volumes:
   postgres_data:
+
+
+
+
+# version: '3.8'
+
+# services:
+#   tarot-app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:8080"
+#     depends_on:
+#       - db
+#     env_file:
+#       - .env   # Add this line to load the .env file
+#     environment:
+#       - DB_HOST=db              # Use 'db' as the database host
+#       - DB_USER=postgres
+#       - DB_PASSWORD=root
+#       - DB_NAME=tarotdb
+#       - DB_PORT=5432
+#     networks:
+#       - tarot-network
+
+#   tarot-admin-app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8081:8081"
+#     depends_on:
+#       - db
+#     env_file:
+#       - .env  # Add this line to load the .env file
+#     environment:
+#       - DB_HOST=db              # Use 'db' as the database host
+#       - DB_USER=postgres
+#       - DB_PASSWORD=root
+#       - DB_NAME=tarotdb
+#       - DB_PORT=5432
+#     networks:
+#       - tarot-network
+
+#   db:
+#     image: postgres:14-alpine
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: root
+#       POSTGRES_DB: tarotdb
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     networks:
+#       - tarot-network
+
+# networks:
+#   tarot-network:
+
+# volumes:
+#   postgres_data:
