@@ -1,6 +1,4 @@
 /build
 
 /package
-.env
-.env.*
 .vs

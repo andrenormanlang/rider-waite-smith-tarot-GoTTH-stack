@@ -9,13 +9,14 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    env_file:
+      - .env   # Add this line to load the .env file
     environment:
-      - DB_HOST=localhost              # Use 'db' as the database host
+      - DB_HOST=db              # Use 'db' as the database host
       - DB_USER=postgres
-      - DB_PASSWORD=shiva7
+      - DB_PASSWORD=root
       - DB_NAME=tarotdb
       - DB_PORT=5432
-      - PORT=8080
     networks:
       - tarot-network
 
@@ -27,13 +28,14 @@ services:
       - "8081:8081"
     depends_on:
       - db
+    env_file:
+      - .env  # Add this line to load the .env file
     environment:
       - DB_HOST=db              # Use 'db' as the database host
       - DB_USER=postgres
-      - DB_PASSWORD=example
+      - DB_PASSWORD=root
       - DB_NAME=tarotdb
       - DB_PORT=5432
-      - PORT=8081
     networks:
       - tarot-network
 
@@ -41,7 +43,7 @@ services:
     image: postgres:14-alpine
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: shiva7
+      POSTGRES_PASSWORD: root
       POSTGRES_DB: tarotdb
     ports:
       - "5432:5432"

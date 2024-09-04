@@ -25,8 +25,14 @@ FROM alpine:latest
 # Set the Current Working Directory
 WORKDIR /app
 
+# Install tini (a tiny init system to manage multiple processes)
+RUN apk add --no-cache tini
+
 # Copy the built binaries from the build stage
 COPY --from=build /app/tmp/app-main /app/tmp/admin-main /app/tmp/
+
+# Copy the .env file
+COPY .env /app/.env
 
 # Expose the necessary ports
 EXPOSE 8080 8081
@@ -35,6 +41,8 @@ EXPOSE 8080 8081
 COPY static/ /app/static
 COPY images/ /app/images
 
+# Use Tini as the entrypoint to manage both processes
+ENTRYPOINT ["/sbin/tini", "--"]
+
 # Command to run both the Tarot app (frontend) and Tarot Admin app (backend)
 CMD ["/bin/sh", "-c", "/app/tmp/app-main & /app/tmp/admin-main"]
-
