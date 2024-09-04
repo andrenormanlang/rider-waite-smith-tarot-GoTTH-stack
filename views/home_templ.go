@@ -28,7 +28,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"></head><body class=\"bg-gray-900 text-gray-100\"><div class=\"container mx-auto max-w-4xl px-4 py-8 bg-gray-900\"><h1 class=\"text-4xl sm:text-5xl font-bold mb-6 text-center text-purple-300\">Rider Waite Smith (Mind, Body & Spirit)</h1><!-- Button to trigger the modal --><button type=\"button\" class=\"smythe-regular w-64 text-xl sm:text-2xl bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg mb-6 mx-auto block transition duration-300 ease-in-out\" data-bs-toggle=\"modal\" data-bs-target=\"#infoModal\">Meaning of Card Positions?</button><!-- Do Another Reading Button -->")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Free Tarot Reading</title><link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\"><link href=\"/static/css/styles.css\" rel=\"stylesheet\"><link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"></head><body class=\"bg-gray-900 text-gray-100\"><div class=\"container mx-auto max-w-4xl px-4 py-8 bg-gray-900\"><h1 class=\"text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center text-purple-300\">Rider Waite Smith (Mind, Body & Spirit)</h1><!-- Button to trigger the modal --><button type=\"button\" class=\"smythe-regular w-64 text-xl sm:text-2xl bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg mb-6 mx-auto block transition duration-300 ease-in-out\" data-bs-toggle=\"modal\" data-bs-target=\"#infoModal\">Meaning of Card Positions?</button><!-- Do Another Reading Button -->")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -71,12 +71,12 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Selected Cards Container --><div id=\"selected-cards\" class=\"mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><!-- Selected Cards Container --><div id=\"selected-cards\" class=\"mt-12 flex flex-col md:flex-row justify-center items-center gap-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for i := 0; i < 3; i++ {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col items-center\"><h3 class=\"smythe-regular text-2xl font-bold mb-4 text-indigo-300\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col items-center m-4\"><h3 class=\"smythe-regular text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-indigo-300\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -108,7 +108,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(selectedCards[i].Image)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 100, Col: 45}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 100, Col: 44}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -121,33 +121,33 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(selectedCards[i].Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 100, Col: 75}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 100, Col: 74}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"w-full h-full object-cover rounded-lg\"></div><div class=\"flip-card-back\"><h2 class=\"text-xl font-semibold mb-2\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"w-full h-full object-cover rounded-lg\"></div><div class=\"flip-card-back\"><h2 class=\"text-xl sm:text-2xl font-semibold mb-2\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(selectedCards[i].Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 103, Col: 73}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 103, Col: 85}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h2><p class=\"text-sm overflow-y-auto flex-grow\">")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h2><p class=\"text-sm sm:text-base overflow-y-auto flex-grow\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				var templ_7745c5c3_Var6 string
 				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(selectedCards[i].MeaningUp)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 104, Col: 84}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/home.templ`, Line: 104, Col: 97}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 				if templ_7745c5c3_Err != nil {

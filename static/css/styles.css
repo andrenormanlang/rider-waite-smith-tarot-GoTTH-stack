@@ -1,6 +1,8 @@
+/* Importing fonts */
 @import url('https://fonts.googleapis.com/css2?family=Smythe&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* Typography */
 .smythe-regular {
     font-family: "Smythe", system-ui;
     font-weight: 400;
@@ -25,11 +27,21 @@
     font-style: italic;
 }
 
+body {
+    padding: 4px;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+/* Header and Titles */
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Adjusted for mobile */
     font-family: 'Smythe', sans-serif;
     font-weight: 400;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 h2 {
@@ -47,7 +59,7 @@ p {
     margin-bottom: 1rem;
 }
 
-/* Keyframes for shuffle animation */
+/* Shuffle Animation */
 @keyframes shuffle {
     0% {
         transform: translateY(0);
@@ -64,7 +76,7 @@ p {
     animation: shuffle 0.5s infinite;
 }
 
-/* Fisher-Yates shuffle animation */
+/* Card Flip Animation */
 @keyframes swap {
     0% {
         transform: translateX(0);
@@ -81,88 +93,57 @@ p {
     animation: swap 0.5s ease-in-out;
 }
 
-/* Custom styles to fit everything on one page */
-body {
-    padding: 4px;
-    font-family: 'Arial', sans-serif;
-}
-
+/* Container styling */
 .container {
-    max-width: 800px; /* Reduce the container width */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 2.5rem; /* Reduce the title font size */
-}
-
-p {
-    font-size: 1rem; /* Reduce the paragraph font size */
-}
-
-/* Updated for horizontal card spread */
-#shuffled-cards {
+/* Cards and Layout */
+/* #shuffled-cards {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px;
     width: 100%;
     margin: 0 auto;
-    overflow-x: hidden; /* Changed from auto to hidden */
-}
+    overflow-x: hidden;
+} */
 
 .card-container {
     flex: 0 0 auto;
-    margin-right: -36px; /* Reduce the overlap between cards */
+    margin-right: -36px;
     transition: transform 0.3s ease, z-index 0.3s ease;
     position: relative;
+    z-index: calc(100 - var(--card-index));
 }
 
-/* Dynamic z-index based on card position */
-.card-container {
-    z-index: calc(100 - var(--card-index)); /* Cards are stacked from 100 down */
-}
-
-/* Hover effect */
 .card-container:hover {
-    transform: translateY(-20px) scale(1.1); /* Slide the card upwards */
-    z-index: calc(101 - var(--card-index)); /* Adjust z-index on hover to sit between neighbors */
+    transform: translateY(-20px) scale(1.1);
+    z-index: calc(101 - var(--card-index));
 }
 
 .card-container img {
-    width: 45px; /* Make the card width smaller */
+    width: 100%;
     height: auto;
 }
 
-/* Reduce the gap between the selected cards */
+/* Selected Cards */
 #selected-cards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem; /* Reduced gap between cards */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.mt-4 {
-    margin-top: 1rem; /* Reduce top margin */
-}
-
-.mb-2 {
-    margin-bottom: 0.5rem; /* Reduce bottom margin */
-}
-
-.bg-red-500,
-.bg-purple-500,
-.bg-yellow-500 {
-    border-radius: 0.25rem; /* Adjust button border radius */
-}
-
-/* Flip card container */
-.flip-card {
+/*.flip-card {
     background-color: transparent;
-    width: 13rem; /* New width */
-    height: 23rem; 
-    perspective: 1000px; /* 3D effect */
-    margin: 0 auto;
-}
+    width: 45%; 
+    height: auto; 
+    perspective: 1000px;
+    margin: 0.5rem;
+}*/
 
-/* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -172,12 +153,10 @@ p {
     transform-style: preserve-3d;
 }
 
-/* Flip the card when hovered */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Position the front and back sides */
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
@@ -186,13 +165,11 @@ p {
     border-radius: 10px;
 }
 
-/* Style the front side */
 .flip-card-front {
     background-color: #bbb;
     color: black;
 }
 
-/* Style the back side */
 .flip-card-back {
     background-color: black;
     color: white;
@@ -204,7 +181,7 @@ p {
     padding: 10px;
 }
 
-/* Scrollbar styling for flip card back */
+/* Scrollbar Styling */
 .flip-card-back::-webkit-scrollbar {
     width: 5px;
 }
@@ -221,56 +198,137 @@ p {
     background: #555;
 }
 
-/* Typography */
+/* Typography for Cards */
 .flip-card-back h2 {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: white;
 }
 
 .flip-card-back p {
     font-size: 0.9rem;
     line-height: 1.2;
-    margin: 0; /* Remove default margin */
-    flex-grow: 1; /* Allow the text to grow and take available space */
-    overflow-y: auto; /* Scroll if content overflows */
-    color: white;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 .flip-card-back button {
-    margin-top: 0.5rem; /* Add some space between the text and the button */
+    margin-top: 0.5rem;
 }
 
+/* Modal Content */
 .modal-content {
-    background-color: #1e1e1e; /* Dark gray background */
-    color: #f0f0f0; /* Light gray text */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Space around content */
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 90%;
+    width: 100%;
 }
 
 .modal-header {
-    border-bottom: 1px solid #444; /* Light border for header */
+    border-bottom: 1px solid #444;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
 
 .modal-header .modal-title {
-    color: #fff; /* White color for the title */
+    color: #fff;
 }
 
 .modal-body {
-    color: #ddd; /* Slightly lighter gray for body text */
-    font-size: 1.1rem; /* Slightly increase font size */
-    line-height: 1.6; /* Improve line spacing for readability */
+    color: #ddd;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .modal-body hr {
-    border-color: #444; /* Match the divider color with header border */
+    border-color: #444;
+}
+
+.modal-body img {
+    width: 100%;
+    max-width: 300px; /* Reduce the size of the card image */
+    height: auto;
+    margin: 0 auto;
 }
 
 .modal-footer {
-    border-top: 1px solid #444; /* Light border for footer */
+    border-top: 1px solid #444;
     margin-top: 15px;
     padding-top: 10px;
+}
+
+/* Buttons */
+button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#shuffleButton,
+#doAnotherReading {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 768px) {
+    /* Adjust button and text sizes */
+    h1 {
+        font-size: 2rem;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
+    #selected-cards {
+        flex-direction: column; /* Stack selected cards vertically */
+    }
+
+    .flip-card {
+        width: 90%; /* Full width on mobile */
+    }
+
+    .modal-body img {
+        max-width: 80%; /* Make the image scale dynamically on smaller screens */
+    }
+
+    #shuffled-cards img {
+        width: 25vw; /* Smaller cards on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem; /* Even smaller title for small screens */
+    }
+
+    p {
+        font-size: 0.9rem; /* Reduce text size for better readability */
+    }
+
+    .flip-card {
+        width: 100%; /* Full width on small screens */
+    }
+
+    #shuffled-cards img {
+        width: 30vw; /* Even smaller cards on very small screens */
+    }
+
+    .modal-body img {
+        max-width: 90%; /* Adjust modal image width on very small screens */
+    }
 }

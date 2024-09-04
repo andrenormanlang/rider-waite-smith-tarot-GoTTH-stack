@@ -15,7 +15,7 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 		</head>
 		<body class="bg-gray-900 text-gray-100">
 			<div class="container mx-auto max-w-4xl px-4 py-8 bg-gray-900">
-				<h1 class="text-4xl sm:text-5xl font-bold mb-6 text-center text-purple-300">Rider Waite Smith (Mind, Body & Spirit)</h1>
+				<h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center text-purple-300">Rider Waite Smith (Mind, Body & Spirit)</h1>
 				<!-- Button to trigger the modal -->
 				<button type="button" class="smythe-regular w-64 text-xl sm:text-2xl bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg mb-6 mx-auto block transition duration-300 ease-in-out" data-bs-toggle="modal" data-bs-target="#infoModal">
 					Meaning of Card Positions?
@@ -80,10 +80,10 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 					}
 				</div>
 				<!-- Selected Cards Container -->
-				<div id="selected-cards" class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+				<div id="selected-cards" class="mt-12 flex flex-col md:flex-row justify-center items-center gap-4">
 					for i := 0; i < 3; i++ {
-						<div class="flex flex-col items-center">
-							<h3 class="smythe-regular text-2xl font-bold mb-4 text-indigo-300">
+						<div class="flex flex-col items-center m-4">
+							<h3 class="smythe-regular text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-indigo-300">
 								if i == 0 {
 									Past
 								} else if i == 1 {
@@ -97,11 +97,11 @@ templ Home(cards []common.Card, selectedCards []common.Card, meanings []string, 
 								<div class="flip-card">
 									<div class="flip-card-inner">
 										<div class="flip-card-front">
-											<img src={  selectedCards[i].Image } alt={ selectedCards[i].Name } class="w-full h-full object-cover rounded-lg"/>
+											<img src={ selectedCards[i].Image } alt={ selectedCards[i].Name } class="w-full h-full object-cover rounded-lg"/>
 										</div>
 										<div class="flip-card-back">
-											<h2 class="text-xl font-semibold mb-2">{ selectedCards[i].Name }</h2>
-											<p class="text-sm overflow-y-auto flex-grow">{ selectedCards[i].MeaningUp }</p>
+											<h2 class="text-xl sm:text-2xl font-semibold mb-2">{ selectedCards[i].Name }</h2>
+											<p class="text-sm sm:text-base overflow-y-auto flex-grow">{ selectedCards[i].MeaningUp }</p>
 											<button
 												type="button"
 												class="mt-4 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-300 ease-in-out"

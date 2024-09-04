@@ -28,20 +28,20 @@ func CardDetailModal(card common.Card) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\"><div class=\"modal-content bg-gray-900 text-purple-400\"><div class=\"modal-header\"><h5 class=\"modal-title smythe-regular text-3xl w-100 text-center\" id=\"cardModalLabel\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\"><div class=\"modal-content bg-gray-900 text-purple-400\"><div class=\"modal-header\"><h5 class=\"modal-title smythe-regular text-2xl sm:text-3xl md:text-4xl w-full text-center\" id=\"cardModalLabel\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(card.Name)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 9, Col: 101}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 9, Col: 126}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><button type=\"button\" class=\"btn-close btn-close-white\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-6 py-4\" style=\"max-height: 70vh; overflow-y: auto;\"><!-- Display the card image --><div class=\"text-center mb-4\"><img src=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><button type=\"button\" class=\"btn-close btn-close-white\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button></div><div class=\"modal-body px-4 sm:px-6 py-4\" style=\"max-height: 70vh; overflow-y: auto;\"><!-- Display the card image --><div class=\"text-center mb-4\"><img src=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -67,40 +67,40 @@ func CardDetailModal(card common.Card) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"img-fluid mx-auto rounded shadow-sm\" style=\"max-width: 30%; height: auto;\"></div><p class=\"text-2xl old-standard-tt-bold mb-2\">Description:</p><p class=\"text-xl old-standard-tt-regular mb-4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"img-fluid mx-auto rounded shadow-sm\" style=\"max-width: 90%; sm:max-width: 80%; height: auto;\"></div><!-- Card Description --><p class=\"text-xl sm:text-2xl old-standard-tt-bold mb-2\">Description:</p><p class=\"text-base sm:text-xl old-standard-tt-regular mb-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(card.Description)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 18, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 19, Col: 83}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Meaning (Upright):</p><p class=\"text-xl old-standard-tt-regular mb-4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><!-- Meaning Upright --><p class=\"text-xl sm:text-2xl old-standard-tt-bold mb-2\">Meaning (Upright):</p><p class=\"text-base sm:text-xl old-standard-tt-regular mb-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(card.MeaningUp)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 21, Col: 68}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 23, Col: 81}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><p class=\"text-2xl old-standard-tt-bold mb-2\">Meaning (Reversed):</p><p class=\"text-xl old-standard-tt-regular\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"my-4 border-gray-600\"><!-- Meaning Reversed --><p class=\"text-xl sm:text-2xl old-standard-tt-bold mb-2\">Meaning (Reversed):</p><p class=\"text-base sm:text-xl old-standard-tt-regular\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(card.MeaningRev)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 24, Col: 64}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/modal.templ`, Line: 27, Col: 77}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
