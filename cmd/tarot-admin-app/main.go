@@ -1,7 +1,7 @@
 package main
 
 import (
-    "log"
+    // "log"
     "os"
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/admin-app/routes"
@@ -30,7 +30,6 @@ func main() {
     
 
     router.Static("/static", "./static")
-    router.Static("/images", "./images")
 
     // Initialize and migrate database
     database.ConnectDatabase()
@@ -39,15 +38,15 @@ func main() {
     // Register backend routes
     routes.BackendRegisterRoutes(router)
 
-    // Get port from environment variable
+    // // Get port from environment variable
     port := os.Getenv("PORT")
     if port == "" {
         port = "8081" // Default to 8081 if PORT is not set
     }
 
-    // Start the server
-    err := router.Run(":" + port)
-    if err != nil {
-        log.Fatalf("Server could not start: %v", err)
-    }
+    // // Start the server
+    // err := router.Run(":" + port)
+    // if err != nil {
+    //     log.Fatalf("Server could not start: %v", err)
+    // }
 }
