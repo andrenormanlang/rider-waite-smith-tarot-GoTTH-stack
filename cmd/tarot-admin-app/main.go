@@ -7,7 +7,9 @@ import (
     "andrenormanlang/tarot-go-htmx/admin-app/routes"
     "andrenormanlang/tarot-go-htmx/database"
     "andrenormanlang/tarot-go-htmx/common"
+    "github.com/gin-contrib/cors"
     "github.com/joho/godotenv"
+    "time"
 )
 
 func main() {
@@ -15,12 +17,26 @@ func main() {
     godotenv.Load()
 
     router := gin.Default()
+
+    // Setup CORS middleware with default options
+    router.Use(cors.New(cors.Config{
+        AllowOrigins:     []string{"https://example.com"},
+        AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"},
+        AllowHeaders:     []string{"Origin", "Authorization", "Content-Type"},
+        ExposeHeaders:    []string{"Content-Length"},
+        AllowCredentials: true,
+        MaxAge: 12 * time.Hour,
+    }))
+    
+
     router.Static("/static", "./static")
     router.Static("/images", "./images")
 
+    // Initialize and migrate database
     database.ConnectDatabase()
     database.DB.AutoMigrate(&common.Card{})
 
+    // Register backend routes
     routes.BackendRegisterRoutes(router)
 
     // Get port from environment variable
