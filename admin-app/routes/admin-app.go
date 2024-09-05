@@ -3,6 +3,7 @@ package routes
 import (
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/admin-app/handlers"
+	"log"
 	// "andrenormanlang/tarot-go-htmx/utils"
 )
 
@@ -22,4 +23,9 @@ func BackendRegisterRoutes(router *gin.Engine) {
 		router.PUT("/cards/bulk-update", handlers.BulkUpdateCards)
 		router.DELETE("/cards/:id", handlers.DeleteCard)
 		router.DELETE("/cards/bulk-delete", handlers.BulkDeleteCards)
+
+		router.GET("/test", func(c *gin.Context) {
+			log.Println("Test endpoint hit")
+			c.JSON(200, gin.H{"message": "success"})
+		})
 }
