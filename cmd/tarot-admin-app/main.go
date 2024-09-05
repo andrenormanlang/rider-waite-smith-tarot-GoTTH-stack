@@ -24,7 +24,7 @@ func main() {
 
      // Configure CORS middleware
      router.Use(cors.New(cors.Config{
-        AllowOrigins:     []string{"https://rider-waite-smith-tarot.onrender.com/"}, // Adjust this to your frontend's URL
+        AllowOrigins:     []string{"https://rider-waite-smith-tarot.onrender.com"}, // Adjust this to your frontend's URL
         AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
         AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
         ExposeHeaders:    []string{"Content-Length"},
