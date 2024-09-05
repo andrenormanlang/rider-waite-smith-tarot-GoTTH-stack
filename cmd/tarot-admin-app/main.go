@@ -1,7 +1,7 @@
 package main
 
 import (
-    // "log"
+    "log"
     "os"
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/admin-app/routes"
@@ -44,9 +44,9 @@ func main() {
         port = "8081" // Default to 8081 if PORT is not set
     }
 
-    // // Start the server
-    // err := router.Run(":" + port)
-    // if err != nil {
-    //     log.Fatalf("Server could not start: %v", err)
-    // }
+    // Start the server
+    err := router.Run(":" + port)
+    if err != nil {
+        log.Fatalf("Server could not start: %v", err)
+    }
 }
