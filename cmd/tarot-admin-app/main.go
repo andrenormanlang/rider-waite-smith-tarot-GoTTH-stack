@@ -2,51 +2,35 @@ package main
 
 import (
     "log"
-    "os"
     "github.com/gin-gonic/gin"
     "andrenormanlang/tarot-go-htmx/admin-app/routes"
     "andrenormanlang/tarot-go-htmx/database"
     "andrenormanlang/tarot-go-htmx/common"
-    "github.com/gin-contrib/cors"
     "github.com/joho/godotenv"
-    "time"
 )
 
 func main() {
-    // Load .env file if it exists
-    godotenv.Load()
 
-    router := gin.Default()
-
-    // Setup CORS middleware with default options
-    router.Use(cors.New(cors.Config{
-        AllowOrigins:     []string{"https://example.com"},
-        AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"},
-        AllowHeaders:     []string{"Origin", "Authorization", "Content-Type"},
-        ExposeHeaders:    []string{"Content-Length"},
-        AllowCredentials: true,
-        MaxAge: 12 * time.Hour,
-    }))
-    
-
-    router.Static("/static", "./static")
-
-    // Initialize and migrate database
-    database.ConnectDatabase()
-    database.DB.AutoMigrate(&common.Card{})
-
-    // Register backend routes
-    routes.BackendRegisterRoutes(router)
-
-    // // Get port from environment variable
-    port := os.Getenv("PORT")
-    if port == "" {
-        port = "8081" // Default to 8081 if PORT is not set
+    err := godotenv.Load()
+    if err != nil {
+        log.Fatalf("Error loading .env file")
     }
 
-    // Start the server
-    err := router.Run(":" + port)
+    router := gin.Default()
+    router.Static("/static", "./static")
+    router.Static("/images", "./images")  // Serve images directory
+
+    database.ConnectDatabase()
+
+    // Migrate the schema to ensure the database structure is up-to-date
+    database.DB.AutoMigrate(&common.Card{})
+
+    // Register all admin routes
+    routes.BackendRegisterRoutes(router)
+
+    // Start the server on port 8081
+    err = router.Run(":8081")
     if err != nil {
-        log.Fatalf("Server could not start: %v", err)
+        panic("Server could not start")
     }
 }
