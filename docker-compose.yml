@@ -1,3 +1,32 @@
+# version: "3.8"
+
+# services:
+#   tarot-app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8080:8080"
+#     environment:
+#       - DATABASE_URL=postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o
+#     networks:
+#       - tarot-network
+
+#   tarot-admin-app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8081:8081"
+#     environment:
+#       - DATABASE_URL=postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o
+#     networks:
+#       - tarot-network
+
+# volumes:
+#   postgres_data:
+
+
 version: "3.8"
 
 services:
@@ -8,7 +37,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DATABASE_URL=postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o
+      - DATABASE_URL=postgresql://neondb_owner:IN49KBwh7HzXWgep-aged-bird-a6no7ukt.us-west-2.aws.neon.tech/flexible_db_4363939?sslmode=require
     networks:
       - tarot-network
 
@@ -19,11 +48,13 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - DATABASE_URL=postgresql://tarotdb_881o_user:heQdnAfYKGsgtHfdIAEnuhno2LSMWdQK@dpg-crc2gfi6l47c73dafui0-a/tarotdb_881o
+      - DATABASE_URL=postgresql://neondb_owner:IN49KBwh7HzXWgep-aged-bird-a6no7ukt.us-west-2.aws.neon.tech/flexible_db_4363939?sslmode=require
     networks:
       - tarot-network
 
 volumes:
   postgres_data:
 
-
+networks:
+  tarot-network:
+    driver: bridge
