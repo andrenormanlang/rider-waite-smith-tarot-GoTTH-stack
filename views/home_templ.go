@@ -66,7 +66,7 @@ func Home(cards []common.Card, selectedCards []common.Card, meanings []string, i
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" class=\"bg-transparent\" onclick=\"openModal(&#39;{ card.Name }&#39;, &#39;{ card.MeaningUp }&#39;)\"><img src=\"https://res.cloudinary.com/dytiufsuu/image/upload/v1725446781/rws_tarot/CardBacks_ovn82s.png\" alt=\"Card Back\" class=\"w-24 sm:w-32 h-auto\"></button></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"body\" class=\"bg-transparent\" onclick=\"openModal(&#39;{ card.Name }&#39;, &#39;{ card.MeaningUp }&#39;)\"><img src=\"https://res.cloudinary.com/dytiufsuu/image/upload/v1726299580/rws_tarot/CardBacks_zftu9m.jpg\" alt=\"Card Back\" class=\"w-24 sm:w-32 h-auto\"></button></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
